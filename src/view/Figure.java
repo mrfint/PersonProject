@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import view.MainFrame;
 import view.correctionFigure.CorrectFigure;
+import view.correctionFigure.CorrectFigureEx;
 import view.correctionFigure.wrCorrectionOption;
 
 public class Figure extends JPanel
@@ -88,24 +89,38 @@ public class Figure extends JPanel
         return cln;
     }
 
-    private wrCorrectionOption correction = new wrCorrectionOption(this);
+
     @Override
     public void focusGained(FocusEvent e) {
-       
-       Figure tmp= new CorrectFigure((Figure)this.clone()); 
+       Container parent = getParent();
+
+       Figure tmp= new CorrectFigure(this); 
        tmp.setBounds(getX(),getY(), getWidth(), getHeight());
-       getParent().add(tmp);
+       parent.add(tmp);
+       removeFocusListener(this);
+       
+       
+       
+       parent.remove(this);
        tmp.requestFocusInWindow();
-       
-       getParent().repaint();
-       getParent().remove(this);
-       
+       parent.repaint();
     }
 
     @Override
     public void focusLost(FocusEvent e) {
+//        if(this instanceof CorrectFigure){
+//                     ((CorrectFigure)this).removeCorrectionPanels();
+//        }  
+//        repaint();
+//            Container parent = getParent();
+//           // Figure tmp= new CorrectFigureEx(this); 
+//            
+//            tmp.setBounds(getX(),getY(), getWidth(), getHeight());
+//            parent.add(tmp);
+//       
+//            parent.remove(this);
+//            parent.repaint();
         
-       
     }
    private class MouseHandler extends MouseAdapter{
     

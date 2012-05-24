@@ -1,14 +1,14 @@
 
 package view.correctionFigure;
 
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Graphics;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 import view.Figure;
 
 public class CorrectFigure extends Figure{
@@ -17,15 +17,26 @@ public class CorrectFigure extends Figure{
     private MouseResizeHandler mlResize = null;
     
     public CorrectFigure(Figure a) {
+        setFocusable(true);
+        setOpaque(false);
+        
+        
         this.figure = a;
         mlResize = new MouseResizeHandler();
+        add(figure);
         addCorrectionPanels();
     }
-
+    @Override
+    public void paintComponent(Graphics g){
+        
+    }
     @Override
     public void focusGained(FocusEvent e) {
-
     }
+    @Override
+    public void focusLost(FocusEvent e) {
+    }
+ 
     private void addCorrectionPanels() {
         for (int i = 0; i < 8; i++) {
             CorrectionPanel p = new CorrectionPanel(i);
