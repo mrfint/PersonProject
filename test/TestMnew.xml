@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shapes><Rectangle><height>3.0</height><width>5.0</width><x>10.0</x><y>10.0</y></Rectangle><Ellipse><height>3.0</height><width>15.0</width><x>100.0</x><y>10.0</y></Ellipse><RoundRectangle><arcHeight>3.0</arcHeight><arcWidth>2.0</arcWidth><height>10.0</height><width>90.0</width><x>50.0</x><y>30.0</y></RoundRectangle><Ellipse><height>300.0</height><width>15.0</width><x>10.0</x><y>10.0</y></Ellipse><Line><x1>100.0</x1><y1>100.0</y1><x2>100.0</x2><y2>100.0</y2></Line></Shapes>

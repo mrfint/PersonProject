@@ -12,13 +12,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import view.MainFrame;
+import view.correctionFigure.CorrectFigure;
 import view.correctionFigure.wrCorrectionOption;
 
 public class Figure extends JPanel
                             implements Cloneable
                                         , Serializable
                                          , FocusListener{
-    private int type=1;
+    protected int type=1;
     private Color color=Color.black;
     private int wl=1;
     boolean f = false;
@@ -79,7 +80,7 @@ public class Figure extends JPanel
         Figure cln=null;
        
             cln = new Figure();
-            
+           
             cln.setColor(color);
             cln.setWl(wl);
             cln.setType(type);
@@ -90,12 +91,21 @@ public class Figure extends JPanel
     private wrCorrectionOption correction = new wrCorrectionOption(this);
     @Override
     public void focusGained(FocusEvent e) {
-       correction.addCorrectionPanels();
+       
+       Figure tmp= new CorrectFigure((Figure)this.clone()); 
+       tmp.setBounds(getX(),getY(), getWidth(), getHeight());
+       getParent().add(tmp);
+       tmp.requestFocusInWindow();
+       
+       getParent().repaint();
+       getParent().remove(this);
+       
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-        correction.removeCorrectionPanels();
+        
+       
     }
    private class MouseHandler extends MouseAdapter{
     
@@ -124,11 +134,13 @@ public class Figure extends JPanel
             {
                 fig.setBounds(startPoint.x, startPoint.y, w, h);
                 add(fig);
-                fig.requestFocusInWindow();
+                //fig.requestFocusInWindow();
             }
             else
             {    endPoint = e.getPoint();
-                 if(getParent() instanceof Figure) setLocation(getX()+w, getY()+h);  
+                 if(getParent() instanceof Figure){
+                     setLocation(getX()+w, getY()+h);
+                 }  
                  invalidate();
             }
         }
@@ -137,6 +149,13 @@ public class Figure extends JPanel
         
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
+     
+//     @Override
+//     public void mouseReleased(MouseEvent e){
+//         if(MainFrame.curFigure.getType()==0){
+//             requestFocusInWindow();
+//         }
+//     } 
    }
   
   
