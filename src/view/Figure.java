@@ -24,19 +24,17 @@ public class Figure extends JPanel
     private Color color=Color.black;
     private int wl=1;
     boolean f = false;
-    private Point startPoint = null;
-    private Point endPoint = null;
-    private Figure fig = null;
+    
+    
 
     public Figure() {
         super(null);
         setFocusable(true);
         setOpaque(false);
         addFocusListener(this);
-        MouseHandler mouseHandler = new MouseHandler();
+        MouseHandlerFigure mouseHandler = new MouseHandlerFigure(this);
         addMouseListener(mouseHandler);
-        addMouseMotionListener(mouseHandler);
-        
+        addMouseMotionListener(mouseHandler);     
     }
     
     public void paintComponent(Graphics g){
@@ -51,7 +49,6 @@ public class Figure extends JPanel
             case 3: { g2.draw(new RoundRectangle2D.Float(wl, wl, getWidth()-2*wl, getHeight()-2*wl , 10 , 10)); break; }
             case 4: { g2.draw(new Line2D.Float(wl, wl, getWidth(), getHeight()) );     break;                 }
         }
-
     }
     
     public int getType() {
@@ -77,6 +74,7 @@ public class Figure extends JPanel
     public void setWl(int wl) {
         this.wl = wl;
     }
+    
     public Object clone() {
         Figure cln=null;
        
@@ -89,17 +87,12 @@ public class Figure extends JPanel
         return cln;
     }
 
-
     @Override
     public void focusGained(FocusEvent e) {
-       Container parent = getParent();
-
+       Container parent = getParent();      
+       
        Figure tmp= new CorrectFigure(this); 
-       tmp.setBounds(getX(),getY(), getWidth(), getHeight());
        parent.add(tmp);
-       removeFocusListener(this);
-       
-       
        
        parent.remove(this);
        tmp.requestFocusInWindow();
@@ -108,71 +101,6 @@ public class Figure extends JPanel
 
     @Override
     public void focusLost(FocusEvent e) {
-//        if(this instanceof CorrectFigure){
-//                     ((CorrectFigure)this).removeCorrectionPanels();
-//        }  
-//        repaint();
-//            Container parent = getParent();
-//           // Figure tmp= new CorrectFigureEx(this); 
-//            
-//            tmp.setBounds(getX(),getY(), getWidth(), getHeight());
-//            parent.add(tmp);
-//       
-//            parent.remove(this);
-//            parent.repaint();
-        
     }
-   private class MouseHandler extends MouseAdapter{
-    
-    @Override
-    public void mousePressed(MouseEvent e) {
-         startPoint = e.getPoint();
-         
-         if(MainFrame.curFigure.getType()!=0) 
-         {   fig = (Figure) MainFrame.curFigure.clone();
-             setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
-         }
-         else
-         {   
-             requestFocusInWindow();
-             setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
-          }
-    }
-     @Override
-        public void mouseDragged(MouseEvent e) {
-            
-            endPoint = e.getPoint();
-            
-            int w = endPoint.x - startPoint.x;
-            int h = endPoint.y - startPoint.y;   
-            if(MainFrame.curFigure.getType()!=0)
-            {
-                fig.setBounds(startPoint.x, startPoint.y, w, h);
-                add(fig);
-                //fig.requestFocusInWindow();
-            }
-            else
-            {    endPoint = e.getPoint();
-                 if(getParent() instanceof Figure){
-                     setLocation(getX()+w, getY()+h);
-                 }  
-                 invalidate();
-            }
-        }
-     @Override
-     public void mouseMoved(MouseEvent e) {
-        
-        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }
-     
-//     @Override
-//     public void mouseReleased(MouseEvent e){
-//         if(MainFrame.curFigure.getType()==0){
-//             requestFocusInWindow();
-//         }
-//     } 
-   }
-  
-  
- 
+
 }

@@ -17,24 +17,32 @@ public class CorrectFigure extends Figure{
     private MouseResizeHandler mlResize = null;
     
     public CorrectFigure(Figure a) {
-        setFocusable(true);
-        setOpaque(false);
-        
-        
+        super();
         this.figure = a;
-        mlResize = new MouseResizeHandler();
-        add(figure);
+        setType(figure.getType());
+        
+        mlResize = new MouseResizeHandler(this);
+        
+        setBounds(figure.getX(), figure.getY(), figure.getWidth(), figure.getHeight());
         addCorrectionPanels();
     }
     @Override
     public void paintComponent(Graphics g){
-        
+        super.paintComponent(g);
+        figure.setBounds(0, 0, getWidth(), getHeight());
     }
     @Override
     public void focusGained(FocusEvent e) {
     }
     @Override
     public void focusLost(FocusEvent e) {
+        Container parent = getParent();
+        Figure tmp = figure;
+        parent.add(tmp);
+        tmp.setLocation(getX(),getY());
+        parent.remove(this);
+
+        parent.repaint(); 
     }
  
     private void addCorrectionPanels() {
@@ -65,14 +73,17 @@ public class CorrectFigure extends Figure{
             }
         }
     }
-    
-    
-    
+   
   private class MouseResizeHandler extends MouseAdapter
     {   private CorrectFigure inn;
 
         private Point startPoint = null;
         private Point endPoint = null;
+
+        public MouseResizeHandler(CorrectFigure inn) {
+            this.inn = inn;
+        }
+        
      
     @Override
     public void mousePressed(MouseEvent e) {
@@ -84,12 +95,12 @@ public class CorrectFigure extends Figure{
     public void mouseDragged(MouseEvent e) {
 
         endPoint = e.getPoint(); 
-        figure.setCursor(Cursor.getDefaultCursor());
+        inn.setCursor(Cursor.getDefaultCursor());
         
-        int x = figure.getX();
-        int y = figure.getY();
-        int w = figure.getWidth();
-        int h = figure.getHeight();
+        int x = inn.getX();
+        int y = inn.getY();
+        int w = inn.getWidth();
+        int h = inn.getHeight();
         
         int dx = endPoint.x-startPoint.x;
         int dy = endPoint.y-startPoint.y;
@@ -108,8 +119,8 @@ public class CorrectFigure extends Figure{
             case 7 : {    w+=dx; h+=dy;                break;        }
         }
         
-        figure.setBounds(x, y, w, h);
-        figure.repaint();
+        inn.setBounds(x, y, w, h);
+        inn.repaint();
         updateCorrectionPanels();
       }
 
@@ -118,14 +129,14 @@ public class CorrectFigure extends Figure{
         CorrectionPanel cp = (CorrectionPanel) e.getSource();
         switch(cp.getType())
         {
-            case 0 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR));  break;   }
-            case 1 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));   break;   }
-            case 2 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR));  break;   }
-            case 3 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));   break;   } 
-            case 4 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));   break;   }   
-            case 5 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));  break;   }
-            case 6 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));   break;   }   
-            case 7 : { figure.setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));  break;   }
+            case 0 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR));  break;   }
+            case 1 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));   break;   }
+            case 2 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR));  break;   }
+            case 3 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));   break;   } 
+            case 4 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));   break;   }   
+            case 5 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));  break;   }
+            case 6 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));   break;   }   
+            case 7 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));  break;   }
         }
         
     }
