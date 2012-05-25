@@ -50,6 +50,7 @@ public class CorrectionPanel
             case 5 : {  x = 0;                   y = h-corHEIGHT;  break;     }
             case 6 : {  x = (w-this.corWIDTH)/2; y = h-corHEIGHT;  break;     }   
             case 7 : {  x = w-corWIDTH;          y = h-corHEIGHT;  break;     }
+            case 8 : {  x = (w-corWIDTH)/2;      y = h/2;          break;     }
         }
          setBounds(x, y, corWIDTH, corHEIGHT); 
     }

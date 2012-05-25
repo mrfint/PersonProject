@@ -13,8 +13,6 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import view.MainFrame;
 import view.correctionFigure.CorrectFigure;
-import view.correctionFigure.CorrectFigureEx;
-import view.correctionFigure.wrCorrectionOption;
 
 public class Figure extends JPanel
                             implements Cloneable
@@ -24,8 +22,6 @@ public class Figure extends JPanel
     private Color color=Color.black;
     private int wl=1;
     boolean f = false;
-    
-    
 
     public Figure() {
         super(null);

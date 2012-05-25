@@ -28,8 +28,7 @@ public class MouseHandlerFigure extends MouseAdapter{
              current.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
          }
          else
-         {   
-             
+         {               
              current.requestFocusInWindow();
              current.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
          }
@@ -60,11 +59,5 @@ public class MouseHandlerFigure extends MouseAdapter{
         
         current.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
-     
-//     @Override
-//     public void mouseReleased(MouseEvent e){
-//         if(MainFrame.curFigure.getType()==0){
-//             requestFocusInWindow();
-//         }
-//     } 
+
   }  

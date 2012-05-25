@@ -24,11 +24,12 @@ public class CorrectFigure extends Figure{
         mlResize = new MouseResizeHandler(this);
         
         setBounds(figure.getX(), figure.getY(), figure.getWidth(), figure.getHeight());
+        
         addCorrectionPanels();
+        add(figure);
     }
     @Override
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
         figure.setBounds(0, 0, getWidth(), getHeight());
     }
     @Override
@@ -46,7 +47,7 @@ public class CorrectFigure extends Figure{
     }
  
     private void addCorrectionPanels() {
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             CorrectionPanel p = new CorrectionPanel(i);
             p.addMouseListener(mlResize);
             p.addMouseMotionListener(mlResize);
@@ -117,6 +118,7 @@ public class CorrectFigure extends Figure{
             case 5 : {    x+=dx; w-=dx; h+=dy;         break;        }
             case 6 : {    h+=dy;                       break;        }   
             case 7 : {    w+=dx; h+=dy;                break;        }
+            case 8 : {    x+=dx; y+=dy;                break;        }
         }
         
         inn.setBounds(x, y, w, h);
@@ -137,6 +139,7 @@ public class CorrectFigure extends Figure{
             case 5 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));  break;   }
             case 6 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));   break;   }   
             case 7 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));  break;   }
+            case 8 : { inn.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));       break;   }
         }
         
     }
