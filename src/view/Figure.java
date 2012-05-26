@@ -113,16 +113,16 @@ private class MouseHandler extends MouseAdapter{
     @Override
     public void mousePressed(MouseEvent e) {
          startPoint = e.getPoint();
-         
-         if(MainFrame.curFigure.getType()!=0) 
-         {   fig = (Figure) MainFrame.curFigure.clone();
-             current.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+         if ((e.getModifiersEx() & e.BUTTON1_DOWN_MASK ) != 0 & ((e.getClickCount()>1)||(MainFrame.curFigure.getType()==0) )){
+			current.requestFocusInWindow();
+                        MainFrame.curFigure.setType(0);
+			
          }
-         else
-         {   
-             current.requestFocusInWindow();
-             current.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
-         }
+         else if(MainFrame.curFigure.getType()!=0) 
+              {   
+                  fig = (Figure) MainFrame.curFigure.clone();
+                  current.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+              }
     }
      @Override
         public void mouseDragged(MouseEvent e) {

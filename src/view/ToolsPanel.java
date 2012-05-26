@@ -20,9 +20,7 @@ import javax.swing.colorchooser.*;
         for (int i = 0; i < capToolsShapes.length; i++) 
         {
             XButton b = new XButton(capToolsShapes[i],i);
-            b.setFocusable(false);
             b.addActionListener(new ActionListener() {
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     XButton but = (XButton) e.getSource();
@@ -30,10 +28,8 @@ import javax.swing.colorchooser.*;
                 }
             });
             add(b);
-            
         }
-        
-        
+        ((XButton)getComponent(0)).setFocusPainted(false);
     }
  
     
