@@ -19,14 +19,12 @@ public class CorrectFigure extends Figure{
     public CorrectFigure(Figure a) {
         super();
         this.figure = a;
-        setType(figure.getType());
-        
         mlResize = new MouseResizeHandler(this);
-        
+        setType(figure.getType());
         setBounds(figure.getX(), figure.getY(), figure.getWidth(), figure.getHeight());
-        
         addCorrectionPanels();
         add(figure);
+        
     }
     @Override
     public void paintComponent(Graphics g){
@@ -34,18 +32,20 @@ public class CorrectFigure extends Figure{
     }
     @Override
     public void focusGained(FocusEvent e) {
+        System.out.println("Focuse gainedCor"+ getType());
     }
     @Override
     public void focusLost(FocusEvent e) {
-        Container parent = getParent();
-        Figure tmp = figure;
-        parent.add(tmp);
-        tmp.setLocation(getX(),getY());
-        parent.remove(this);
+         System.out.println("Focuse lostCor"+ getType());
+         Container parent = getParent();
+         Figure tmp = figure;
 
-        parent.repaint(); 
+         parent.add(tmp);
+         tmp.setLocation(getX(),getY());
+         parent.remove(this);
+//
+//         parent.repaint(); 
     }
- 
     private void addCorrectionPanels() {
         for (int i = 0; i < 9; i++) {
             CorrectionPanel p = new CorrectionPanel(i);
@@ -73,6 +73,10 @@ public class CorrectFigure extends Figure{
                         ((CorrectionPanel)c).setBounds();
             }
         }
+    }
+
+    public Figure getFigure() {
+        return figure;
     }
    
   private class MouseResizeHandler extends MouseAdapter

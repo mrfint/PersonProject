@@ -23,7 +23,7 @@ public class MainFrame extends JFrame{
     private String[] discMenuFileEn={"Clear canvas","Save file as...","Load file...","Exit application"};
  
     public static final int DEFAULT_WIDTH=1500;
-    public static final int DEFAULT_HEIGHT=700;
+    public static final int DEFAULT_HEIGHT=500;
     public static JPanel drawHolst = null;
     public static Figure curFigure = new Figure();
   
