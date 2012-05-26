@@ -32,19 +32,15 @@ public class CorrectFigure extends Figure{
     }
     @Override
     public void focusGained(FocusEvent e) {
-        System.out.println("Focuse gainedCor"+ getType());
     }
     @Override
     public void focusLost(FocusEvent e) {
-         System.out.println("Focuse lostCor"+ getType());
          Container parent = getParent();
          Figure tmp = figure;
 
          parent.add(tmp);
          tmp.setLocation(getX(),getY());
          parent.remove(this);
-//
-//         parent.repaint(); 
     }
     private void addCorrectionPanels() {
         for (int i = 0; i < 9; i++) {
@@ -56,17 +52,6 @@ public class CorrectFigure extends Figure{
         this.repaint();
     }
     
-    public void removeCorrectionPanels() {
-       for(Component comp: this.getComponents()) {
-            if(comp instanceof CorrectionPanel){   
-                this.remove(comp);              
-            }
-        }
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)); 
-      
-        this.repaint();
-    }
-    
     public void updateCorrectionPanels(){
         for(Component c: this.getComponents()) {
             if(c instanceof CorrectionPanel){ 
@@ -74,11 +59,7 @@ public class CorrectFigure extends Figure{
             }
         }
     }
-
-    public Figure getFigure() {
-        return figure;
-    }
-   
+ //**************************************private class   
   private class MouseResizeHandler extends MouseAdapter
     {   private CorrectFigure inn;
 

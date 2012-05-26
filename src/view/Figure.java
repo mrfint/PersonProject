@@ -46,30 +46,21 @@ public class Figure extends JPanel
             case 4: { g2.draw(new Line2D.Float(wl, wl, getWidth(), getHeight()) );     break;                 }
         }
     }
-    Figure tmp;
+
     @Override
     public void focusGained(FocusEvent e) {
        Container parent = getParent();      
-       System.out.println("Focuse gained"+ getType());
-       tmp= new CorrectFigure(this); 
+
+       Figure tmp= new CorrectFigure(this); 
        parent.add(tmp);
+       tmp.requestFocusInWindow(); 
+       
        parent.remove(this);
        parent.repaint();
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-         System.out.println("Focuse lostFig"+ getType());
-         
-         tmp.requestFocusInWindow();       
-
-//         Container parent = getParent();
-//         Figure tmp = ((CorrectFigure)this).getFigure();
-//         parent.add(tmp);
-//         tmp.setLocation(getX(),getY());
-//         parent.remove(this);
-//
-//         parent.repaint(); 
     }
     
         
@@ -129,7 +120,6 @@ private class MouseHandler extends MouseAdapter{
          }
          else
          {   
-             System.out.println("Clac");
              current.requestFocusInWindow();
              current.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
          }
