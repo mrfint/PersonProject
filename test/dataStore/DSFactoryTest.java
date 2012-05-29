@@ -1,4 +1,4 @@
-package com.softserve.oop4.test;
+package dataStore;
 
 import dataStore.DSFactory;
 import dataStore.ADS;
@@ -25,7 +25,8 @@ public class DSFactoryTest {
 				{ "json", "DS_JSON" },
 				{ "yaml", "DS_YAML" },
 				{ "test.xaml", null },
-                                { "dxml", "DS_domXML" },
+                                { "d1xml", "DS_domXML1" },
+                                { "d2xml", "DS_domXML2" },
                                 { "mock", "DS_Mock" },
 				};
 		return Arrays.asList(data);

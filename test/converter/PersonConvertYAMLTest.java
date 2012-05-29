@@ -6,24 +6,23 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import plant.Flower;
-import plant.Tree;
+import person.Person;
 
 public class PersonConvertYAMLTest {
-    FlowerConvertYAML t = new FlowerConvertYAML();
-    Flower o1 = new Flower();
+    PersonConvertYAML t = new PersonConvertYAML();
+    Person o1 = null;
 
     public PersonConvertYAMLTest() {
-        FlowerConvertXML t0 = new FlowerConvertXML();
-        o1 = (Flower) t0.fromString("<Flower><id>0</id><name>Rose</name><location>Ukraine</location>"
-                + "<color>red</color><structure>purpose</structure><qpetal>12</qpetal><spike>true</spike>"
-                + "<temperature>30.0</temperature></Flower>");
+        o1 = new Person(0,"Gary","Portman",30);
     }
         
     @Test
+    public void testFromString() {
+         assertEquals(t.fromString("***Person*******************\r\n\t id : 0\r\n\t fn : Gary\r\n\t ln : Portman\r\n\t age : 30\t\r\n****************************\r\n"), o1);
+    }
+    @Test
     public void testToString() {
         
-        System.out.println(t.toString(o1));
-        
+        assertEquals(t.toString(o1), "***Person*******************\r\n\t id : 0\r\n\t fn : Gary\r\n\t ln : Portman\r\n\t age : 30\t\r\n****************************\r\n");   
     }
 }

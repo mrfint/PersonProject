@@ -6,28 +6,23 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import plant.Flower;
-import plant.Tree;
+import person.Person;
 
 public class PersonConvertXMLTest {
-    FlowerConvertXML t = new FlowerConvertXML();
-    Flower o1 = new Flower();
+    PersonConvertXML t = new PersonConvertXML();
+    Person o1 = null;
 
     public PersonConvertXMLTest() {
-        o1 = (Flower) t.fromString("<Flower><id>0</id><name>Rose</name><location>Ukraine</location>"
-                + "<color>red</color><structure>purpose</structure><qpetal>12</qpetal><spike>true</spike>"
-                + "<temperature>30.0</temperature></Flower>");
+        o1 = new Person(0,"Gary","Portman",30);
     }
         
     @Test
     public void testFromString() {
-        assertEquals(o1.toString(), "Flower: id: 0, name :Rose, location: Ukraine, color: red, structure: "
-                + "purpose, qoual of petal: 12, spike:true, temperature(C):30.0;\r\n");
+         assertEquals(t.fromString("{\"Person\": {\"id\":\"0\",\"fn\":\"Gary\",\"ln\":\"Portman\",\"age\":\"30\"}\r\n"), o1);
     }
     @Test
     public void testToString() {
-        assertEquals("<Flower><id>0</id><name>Rose</name><location>Ukraine</location>"
-                + "<color>red</color><structure>purpose</structure><qpetal>12</qpetal><spike>true</spike>"
-                + "<temperature>30.0</temperature></Flower>\r\n", t.toString(o1));
+        
+        assertEquals(t.toString(o1), "{\"Person\": {\"id\":\"0\",\"fn\":\"Gary\",\"ln\":\"Portman\",\"age\":\"30\"}\r\n");   
     }
 }

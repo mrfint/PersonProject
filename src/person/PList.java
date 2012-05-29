@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PlantList{
+public class PList{
     private List<Person> lst;
-    public PlantList(){
+    public PList(){
         lst = new ArrayList();
     }
     public void add(Person o){

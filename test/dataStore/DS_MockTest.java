@@ -10,14 +10,14 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import plant.Plant;
-import plant.PlantList;
+import person.PList;
+
 
 @RunWith(value=Parameterized.class)
 public class DS_MockTest {
-    private PlantList lst=null;
+    private PList lst=null;
 
-    public DS_MockTest(PlantList lst) 
+    public DS_MockTest(PList lst) 
     {
         this.lst=lst;
     }
@@ -25,9 +25,9 @@ public class DS_MockTest {
     public static Collection<Object[]> generateData()
     {
         Object[][] data = new Object[][] {
-                        { PlantMain.initList0() }, 
-                        { PlantMain.initList1() },
-                        { PlantMain.initListM() },
+                        { PersonMain.initList0() }, 
+                        { PersonMain.initList1() },
+                        { PersonMain.initListM() },
        };
     return Arrays.asList(data);
     } 

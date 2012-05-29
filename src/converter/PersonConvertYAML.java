@@ -16,7 +16,7 @@ public class PersonConvertYAML implements IConvert{
             sb.append("\t id : ").append(o.getId()).append("\r\n");
             sb.append("\t fn : ").append(o.getFn()).append("\r\n");
             sb.append("\t ln : ").append(o.getLn()).append("\r\n");
-            sb.append("\t age : ").append(o.getAge()).append("\r\n");
+            sb.append("\t age : ").append(o.getAge()).append("\t\r\n");
         sb.append("****************************\r\n");
         
         return sb.toString();
@@ -27,7 +27,7 @@ public class PersonConvertYAML implements IConvert{
     {   
        String[] fields = s.split("\t");
       String[] q = new String[fields.length];
-      for(int i = 1; i<fields.length; i++)
+      for(int i = 1; i<fields.length-1; i++)
       {  String[] key =fields[i].split(":");
          q[i]=key[1].trim();
       }

@@ -7,9 +7,7 @@ import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
-import plant.PlantList;
-import plant.PlantList;
-import dataStore.PlantMain;
+import dataStore.PersonMain;
 import except.ExtenException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +19,7 @@ import java.util.zip.CheckedInputStream;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import person.PList;
 
 @RunWith(value=Parameterized.class)
 public class DS_CompareFiles {
@@ -54,7 +53,7 @@ public class DS_CompareFiles {
     @Test
     public void testLoadMethodMANY() throws Exception 
     {
-      PlantList lst = PlantMain.initListM();
+      PList lst = PersonMain.initListM();
       
       ds.setfName("IdealFiles\\"+file);
     
@@ -63,7 +62,7 @@ public class DS_CompareFiles {
     @Test
     public void testSaveMethodMANY() throws Exception 
     {
-      PlantList lst = PlantMain.initListM();
+      PList lst = PersonMain.initListM();
       
       ds.setfName(file);
       ds.save(lst.getList());

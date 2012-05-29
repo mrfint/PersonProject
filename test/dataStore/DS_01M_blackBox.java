@@ -7,15 +7,14 @@ import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
-import plant.PlantList;
-import plant.PlantList;
-import dataStore.PlantMain;
+import dataStore.PersonMain;
 import java.util.Arrays;
 import java.util.Collection;
 import org.hamcrest.Factory;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import person.PList;
 
 @RunWith(value=Parameterized.class)
 public class DS_01M_blackBox {
@@ -48,7 +47,7 @@ public class DS_01M_blackBox {
     @Test
     public void testSaveLoadMethodZERO() throws Exception 
     {
-      PlantList lst = PlantMain.initList0();
+      PList lst = PersonMain.initList0();
        
       ds.setfName(file);
       ds.save(lst.getList());
@@ -61,7 +60,7 @@ public class DS_01M_blackBox {
     @Test
     public void testSaveLoadMethodONE() throws Exception 
     {
-      PlantList lst = PlantMain.initList1();
+      PList lst = PersonMain.initList1();
 
       ds.setfName(file);
       ds.save(lst.getList());
@@ -70,7 +69,7 @@ public class DS_01M_blackBox {
     @Test
     public void testSaveLoadMethodMANY() throws Exception 
     {
-      PlantList lst = PlantMain.initListM();
+      PList lst = PersonMain.initListM();
       
       ds.setfName(file);
       ds.save(lst.getList());

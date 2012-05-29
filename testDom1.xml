@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.6.0_24" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="person.Person">
+    <void property="age">
+     <int>32</int>
+    </void>
+    <void property="fn">
+     <string>Nick</string>
+    </void>
+    <void property="id">
+     <int>1</int>
+    </void>
+    <void property="ln">
+     <string>Portman</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="person.Person">
+    <void property="age">
+     <int>30</int>
+    </void>
+    <void property="fn">
+     <string>Gary</string>
+    </void>
+    <void property="ln">
+     <string>Portman</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="person.Person">
+    <void property="age">
+     <int>28</int>
+    </void>
+    <void property="fn">
+     <string>Mary</string>
+    </void>
+    <void property="id">
+     <int>2</int>
+    </void>
+    <void property="ln">
+     <string>Richman</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="person.Person">
+    <void property="age">
+     <int>25</int>
+    </void>
+    <void property="fn">
+     <string>Bony</string>
+    </void>
+    <void property="id">
+     <int>3</int>
+    </void>
+    <void property="ln">
+     <string>Galler</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="person.Person">
+    <void property="age">
+     <int>22</int>
+    </void>
+    <void property="fn">
+     <string>Mike</string>
+    </void>
+    <void property="id">
+     <int>4</int>
+    </void>
+    <void property="ln">
+     <string>Talor</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
