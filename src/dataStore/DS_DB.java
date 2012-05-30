@@ -22,20 +22,27 @@ public class DS_DB extends ADS{
                     "root", "111111");
             
  
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM person");
-            ResultSet result = statement.executeQuery();
-            StringBuilder sb= new StringBuilder("");
-            while(result.next()){
-                System.out.println(result.getString(2));
-
+            Statement stat = conn.createStatement();
+            stat.executeUpdate("DROP TABLE IF EXISTS person");
+            stat.executeUpdate("CREATE TABLE person "+
+                               "(id INTEGER," +
+                                "fn VARCHAR(30)," +
+                                "ln VARCHAR(30)," +
+                                "age INTEGER" +
+                                ");" );
+            PreparedStatement prep = conn.prepareStatement(
+                            "INSERT INTO person VALUES (?, ?, ?, ?);");
+            for (Person person : ls) {
+                    prep.setInt(1, person.getId());
+                    prep.setString(2, person.getFn());
+                    prep.setString(3, person.getLn());
+                    prep.setInt(4, person.getAge());
+                    prep.addBatch();
             }
- 
-            /**
-            * stmt.close();
-            * При закрытии Statement автоматически закрываются
-            * все связанные с ним открытые объекты ResultSet
-            */
-            statement.close();
+//            conn.setAutoCommit(false);
+//            prep.executeBatch();
+//            conn.setAutoCommit(true);
+            
         } catch (SQLException ex) {
 
             Logger.getLogger(DS_DB.class.getName()).log(Level.SEVERE, null, ex);
