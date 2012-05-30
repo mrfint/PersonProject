@@ -18,7 +18,7 @@ public class PersonConvertJSON implements IConvert{
             sb.append("\"fn\":\"").append(t.getFn()).append("\",");
             sb.append("\"ln\":\"").append(t.getLn()).append("\",");
             sb.append("\"age\":\"").append(t.getAge()).append("\"");
-        sb.append("}\r\n");
+        sb.append("}");
         
         return sb.toString();
     }

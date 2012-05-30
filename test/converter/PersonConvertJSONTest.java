@@ -19,11 +19,10 @@ public class PersonConvertJSONTest {
         
     @Test
     public void testFromString() {
-         assertEquals(t.fromString("{\"Person\": {\"id\":\"0\",\"fn\":\"Gary\",\"ln\":\"Portman\",\"age\":\"30\"}\r\n"), o1);
+         assertEquals(t.fromString("{\"Person\": {\"id\":\"0\",\"fn\":\"Gary\",\"ln\":\"Portman\",\"age\":\"30\"}"), o1);
     }
     @Test
     public void testToString() {
-        
-        assertEquals(t.toString(o1), "{\"Person\": {\"id\":\"0\",\"fn\":\"Gary\",\"ln\":\"Portman\",\"age\":\"30\"}\r\n");   
+        assertEquals(t.toString(o1), "{\"Person\": {\"id\":\"0\",\"fn\":\"Gary\",\"ln\":\"Portman\",\"age\":\"30\"}");   
     }
 }

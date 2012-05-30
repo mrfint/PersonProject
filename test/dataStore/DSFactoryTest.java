@@ -28,6 +28,7 @@ public class DSFactoryTest {
                                 { "d1xml", "DS_domXML1" },
                                 { "d2xml", "DS_domXML2" },
                                 { "mock", "DS_Mock" },
+                                {"net", "DS_Net_Client" },
 				};
 		return Arrays.asList(data);
 	}

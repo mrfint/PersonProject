@@ -4,13 +4,10 @@
   <void method="add">
    <object class="person.Person">
     <void property="age">
-     <int>32</int>
+     <int>30</int>
     </void>
     <void property="fn">
-     <string>Nick</string>
-    </void>
-    <void property="id">
-     <int>1</int>
+     <string>Gary</string>
     </void>
     <void property="ln">
      <string>Portman</string>
@@ -20,10 +17,13 @@
   <void method="add">
    <object class="person.Person">
     <void property="age">
-     <int>30</int>
+     <int>32</int>
     </void>
     <void property="fn">
-     <string>Gary</string>
+     <string>Nick</string>
+    </void>
+    <void property="id">
+     <int>1</int>
     </void>
     <void property="ln">
      <string>Portman</string>

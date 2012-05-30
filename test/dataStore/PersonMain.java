@@ -33,7 +33,7 @@ class PersonMain{
         Person o3 = new Person(3,"Bony","Galler",25);
         Person o4 = new Person(4,"Mike","Talor",22);
 
-        list.add(o1); list.add(o); list.add(o2); list.add(o3); list.add(o4); 
+         list.add(o); list.add(o1); list.add(o2); list.add(o3); list.add(o4); 
         return list;
     }
    

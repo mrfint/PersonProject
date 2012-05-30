@@ -29,10 +29,9 @@ public class DS_YAML extends ADS{
         BufferedReader in = new BufferedReader(new FileReader(super.getfName()));
         List<Person> lst = new ArrayList<Person>();
         String s; StringBuilder sb = null;
-        
+        String type = "Person";
         while((s=in.readLine())!=null)
         {   sb = new StringBuilder();
-            String type = (s.charAt(3)=='F')? "Flower" : "Tree";
             s=in.readLine();
             while(s.charAt(3)!='*')  
             {    sb.append(s);

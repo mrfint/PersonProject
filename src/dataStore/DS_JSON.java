@@ -18,7 +18,7 @@ public class DS_JSON extends ADS{
         FileWriter out = new FileWriter(super.getfName());
         for(int i=0; i<lst.size(); i++){
             String type = lst.get(i).getClass().getSimpleName();
-            out.write(FactoryConvertI.getInstance("json", type).toString(lst.get(i)));
+            out.write(FactoryConvertI.getInstance("json", type).toString(lst.get(i))+"\r\n");
         }
         out.close();
     }

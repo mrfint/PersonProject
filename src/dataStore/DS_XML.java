@@ -30,9 +30,9 @@ public class DS_XML extends ADS{
         IConvert converter = null;
         BufferedReader in = new BufferedReader(new FileReader(super.getfName()));
         List<Person> lst = new ArrayList<Person>();
-        String s;
+        String s = in.readLine();
        
-        while((s=in.readLine())!=null)
+        while(!(s=in.readLine()).equals("</document>"))
         {   String type = s.substring(1,s.indexOf('>'));
             converter = FactoryConvertI.getInstance("xml", type);
             if(converter!=null) lst.add(converter.fromString(s));

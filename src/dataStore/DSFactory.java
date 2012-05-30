@@ -26,6 +26,7 @@ public class DSFactory {
             mp.put("json", new DS_JSON());
             mp.put("yaml", new DS_YAML());
             mp.put("mock", new DS_Mock());
+            mp.put("net", new DS_Net_Client());
      
     }
 }

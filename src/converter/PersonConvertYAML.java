@@ -27,7 +27,7 @@ public class PersonConvertYAML implements IConvert{
     {   
        String[] fields = s.split("\t");
       String[] q = new String[fields.length];
-      for(int i = 1; i<fields.length-1; i++)
+      for(int i = 1; i<fields.length; i++)
       {  String[] key =fields[i].split(":");
          q[i]=key[1].trim();
       }
