@@ -31,10 +31,10 @@ public class DS_01M_blackBox {
     {
         Object[][] data = new Object[][] {
                         { "csv", "test.csv" }, 
-                        { "xml", "test.xml" },
+                        { "net", "localhost.xml" },
+                        { "mock", "mock.xml" },
                         { "json", "test.json" },
                         { "yaml", "test.yaml" },
-                        { "d1xml", "testDom1.xml" },
                         { "d2xml", "testDom2.xml" },
        };
     return Arrays.asList(data);
@@ -52,7 +52,7 @@ public class DS_01M_blackBox {
       ds.setfName(file);
       ds.save(lst.getList());
         
-      assertEquals(lst.size(), ds.load().size());
+      assertEquals(lst.getList(), ds.load());
       
     }
     

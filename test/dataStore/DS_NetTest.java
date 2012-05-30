@@ -25,16 +25,16 @@ public class DS_NetTest {
     public static Collection<Object[]> generateData()
     {
         Object[][] data = new Object[][] {
-          //              { PersonMain.initList0() }, 
+                        { PersonMain.initList0() }, 
                         { PersonMain.initList1() },
-          //              { PersonMain.initListM() },
+                        { PersonMain.initListM() },
        };
     return Arrays.asList(data);
     } 
     @Test
     public void testSaveLoadNet() throws IOException {
         
-     //DSFactory.getInstance("net").save(lst.getList());
+      DSFactory.getInstance("net").save(lst.getList());
      
       assertEquals(lst.getList(), DSFactory.getInstance("net").load());
     }

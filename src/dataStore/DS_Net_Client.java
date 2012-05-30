@@ -29,7 +29,7 @@ public class DS_Net_Client extends ADS{
             Scanner in = new Scanner(s.getInputStream());
             PrintWriter out = new PrintWriter(s.getOutputStream(), true );
 
-            out.println("save");
+            out.println("save");           
             for(int i=0; i<lst.size(); i++){
                 String type = lst.get(i).getClass().getSimpleName();
                 out.println(FactoryConvertI.getInstance("json", type).toString(lst.get(i)));

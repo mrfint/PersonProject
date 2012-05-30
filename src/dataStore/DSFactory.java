@@ -27,6 +27,7 @@ public class DSFactory {
             mp.put("yaml", new DS_YAML());
             mp.put("mock", new DS_Mock());
             mp.put("net", new DS_Net_Client());
+            mp.put("db", new DS_DB());
      
     }
 }
