@@ -22,49 +22,49 @@ public class DS_Net_Client extends ADS{
     @Override
     public void save(List<Person> lst) throws IOException {
         
-        s = new Socket("localhost", 8189);
-        
-        Scanner in = new Scanner(s.getInputStream());
-        PrintWriter out = new PrintWriter(s.getOutputStream(), true );
-
-        System.out.println(in.nextLine());
         try
         {
+            s = new Socket("localhost", 8189);
+
+            Scanner in = new Scanner(s.getInputStream());
+            PrintWriter out = new PrintWriter(s.getOutputStream(), true );
+
             out.println("save");
             for(int i=0; i<lst.size(); i++){
                 String type = lst.get(i).getClass().getSimpleName();
                 out.println(FactoryConvertI.getInstance("json", type).toString(lst.get(i)));
             }
-        }
-        finally{
             s.close();
         }
+        catch(IOException e){
+            System.out.println("Connection don't esteblished");
+        }
+
     }
 
     @Override
     public List<Person> load() throws IOException {
+        
         List<Person> lst = new ArrayList<Person>();
-        
-        s = new Socket("localhost", 8189);
-        
 
-        Scanner in = new Scanner(s.getInputStream());
-        PrintWriter out = new PrintWriter(s.getOutputStream(), true );
-        
-        System.out.println(in.nextLine());
-        
         try
         {
-           out.println("load");
-           while (in.hasNext()) {
-                String s = in.next();
+            s = new Socket("localhost", 8189);
+
+            Scanner in = new Scanner(s.getInputStream());
+            PrintWriter out = new PrintWriter(s.getOutputStream(), true );
+
+            out.println("load");
+            while (in.hasNextLine()) {
+                String s = in.nextLine();
                 String type = s.substring(2, s.indexOf(':')-1 );
                 lst.add(FactoryConvertI.getInstance("json", type).fromString(s));
-           } 
-           
-        }
-        finally{
+            } 
+
             s.close();
+        }
+        catch(IOException e){
+            System.out.println("Connection don't esteblished");
         }
         
         return lst;
