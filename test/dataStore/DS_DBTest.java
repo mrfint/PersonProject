@@ -14,14 +14,14 @@ import person.PList;
 
 
 public class DS_DBTest {
-    private PList lst=PersonMain.initList1();
-
     
+    private PList lst=PersonMain.initList0();
+
     @Test
     public void testMockMethod() throws IOException {
             
       DSFactory.getInstance("db").save(lst.getList());
      
-     // assertEquals(lst.getList(), DSFactory.getInstance("mock").load());
+      assertEquals(lst.getList(), DSFactory.getInstance("db").load());
     }
 }

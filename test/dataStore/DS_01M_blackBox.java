@@ -32,6 +32,7 @@ public class DS_01M_blackBox {
         Object[][] data = new Object[][] {
                         { "csv", "test.csv" }, 
                         { "net", "localhost.xml" },
+                        { "db",  "db.xml" },
                         { "mock", "mock.xml" },
                         { "json", "test.json" },
                         { "yaml", "test.yaml" },
