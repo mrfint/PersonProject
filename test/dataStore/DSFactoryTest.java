@@ -29,6 +29,7 @@ public class DSFactoryTest {
                                 { "d2xml", "DS_domXML2" },
                                 { "mock", "DS_Mock" },
                                 {"net", "DS_Net_Client" },
+                                {"db", "DS_DB" },
 				};
 		return Arrays.asList(data);
 	}

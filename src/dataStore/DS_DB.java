@@ -23,8 +23,8 @@ public class DS_DB extends ADS{
                     "root", "111111");
  
             Statement stat = conn.createStatement();
-            stat.executeUpdate("DROP TABLE IF EXISTS person");
-            stat.executeUpdate("CREATE TABLE person "+
+            stat.executeUpdate("DROP TABLE IF EXISTS Person");
+            stat.executeUpdate("CREATE TABLE Person "+
                                "(id INTEGER," +
                                 "fn VARCHAR(30)," +
                                 "ln VARCHAR(30)," +
@@ -32,7 +32,7 @@ public class DS_DB extends ADS{
                                 ");" );
             
             PreparedStatement prepStat = conn.prepareStatement(
-                            "INSERT INTO person VALUES (?, ?, ?, ?);");
+                            "INSERT INTO Person VALUES (?, ?, ?, ?);");
             
             for (Person person : ls) {
                     
