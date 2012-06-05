@@ -1,5 +1,6 @@
 package dataStore;
 
+import except.ExtenException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,10 +19,10 @@ public class DS_DBTest {
     private PList lst=PersonMain.initList0();
 
     @Test
-    public void testMockMethod() throws IOException {
+    public void testMockMethod() throws IOException, ExtenException {
             
-      DSFactory.getInstance("db").save(lst.getList());
+      DSFactory.getInstance("1.db").save(lst.getList());
      
-      assertEquals(lst.getList(), DSFactory.getInstance("db").load());
+      assertEquals(lst.getList(), DSFactory.getInstance("1.db").load());
     }
 }

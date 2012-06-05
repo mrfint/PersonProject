@@ -25,29 +25,26 @@ import person.PList;
 public class DS_CompareFiles {
     private ADS ds = null;
     private String file;
-    private String type;
 
-    public DS_CompareFiles(String type, String file) {
-        this.type = type;
+    public DS_CompareFiles(String file) {
         this.file = file;
     }
     @Parameterized.Parameters
     public static Collection<Object[]> generateData()
     {
         Object[][] data = new Object[][] {
-                        { "csv", "test.csv" }, 
-                        { "xml", "test.xml" },
-                        { "json", "test.json" },
-                        { "yaml", "test.yaml" },
-                        { "d1xml", "testDom1.xml" },
-                        { "d2xml", "testDom2.xml" },
+                        { "test.csv" }, 
+                        { "db.db" },
+                        { "mock.xml" },
+                        { "test.json" },
+                        { "test.yaml" },
+                        { "test.xml" },
        };
     return Arrays.asList(data);
     }
-    
     @Before
-    public void setup(){
-       ds = DSFactory.getInstance(type);  
+    public void setup() throws ExtenException{
+       ds = DSFactory.getInstance(file);  
     }
 
     @Test
@@ -55,7 +52,7 @@ public class DS_CompareFiles {
     {
       PList lst = PersonMain.initListM();
       
-      ds.setfName("IdealFiles\\"+file);
+      ADS.fName = ("IdealFiles\\"+file);
     
       assertEquals(lst.getList(), ds.load());
     }
@@ -64,7 +61,7 @@ public class DS_CompareFiles {
     {
       PList lst = PersonMain.initListM();
       
-      ds.setfName(file);
+      ADS.fName = (file);
       ds.save(lst.getList());
      
       assertEquals(0, compareFiles(file));

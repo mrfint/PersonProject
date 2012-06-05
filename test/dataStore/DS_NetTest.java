@@ -1,5 +1,6 @@
 package dataStore;
 
+import except.ExtenException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,10 +33,10 @@ public class DS_NetTest {
     return Arrays.asList(data);
     } 
     @Test
-    public void testSaveLoadNet() throws IOException {
+    public void testSaveLoadNet() throws IOException, ExtenException {
         
-      DSFactory.getInstance("net").save(lst.getList());
+      DSFactory.getInstance("1.net").save(lst.getList());
      
-      assertEquals(lst.getList(), DSFactory.getInstance("net").load());
+      assertEquals(lst.getList(), DSFactory.getInstance("1.net").load());
     }
 }

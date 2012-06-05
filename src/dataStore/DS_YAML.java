@@ -15,7 +15,7 @@ public class DS_YAML extends ADS{
 
     @Override
     public void save(List<Person> lst) throws IOException {
-        FileWriter out = new FileWriter(super.getfName());
+        FileWriter out = new FileWriter(ADS.fName);
         for(int i=0; i<lst.size(); i++){
             String type = lst.get(i).getClass().getSimpleName();
             out.write(FactoryConvertI.getInstance("yaml", type).toString(lst.get(i)));
@@ -26,7 +26,7 @@ public class DS_YAML extends ADS{
     @Override
     public List<Person> load() throws IOException {
      
-        BufferedReader in = new BufferedReader(new FileReader(super.getfName()));
+        BufferedReader in = new BufferedReader(new FileReader(ADS.fName));
         List<Person> lst = new ArrayList<Person>();
         String s; StringBuilder sb = null;
         String type = "Person";

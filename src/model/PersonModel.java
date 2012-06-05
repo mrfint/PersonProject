@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
 
 import dataStore.DSFactory;
+import except.ExtenException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,9 @@ public class PersonModel extends AbstractTableModel
             } catch (IOException ex) {
                 Logger.getLogger(PersonModel.class.getName()).log(Level.SEVERE, null, ex);
             }
+            catch (ExtenException ex) {
+                Logger.getLogger(PersonModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	}
 	
 	
@@ -37,6 +41,9 @@ public class PersonModel extends AbstractTableModel
             } catch (IOException ex) {
                 Logger.getLogger(PersonModel.class.getName()).log(Level.SEVERE, null, ex);
             }
+            catch (ExtenException ex) {
+                Logger.getLogger(PersonModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
 
@@ -44,7 +51,6 @@ public class PersonModel extends AbstractTableModel
 	{
 		return plist;
 	}
-
 
 	public void setPlist(List<Person> plist) 
 	{
@@ -67,10 +73,8 @@ public class PersonModel extends AbstractTableModel
 	//Get ColumnCount at the jTable
 	public int getColumnCount() 
 	{
-		
-		return 4;
+		return 5;
 	}
-
 
 	@Override
 	//Get RowCount at the jTable 
@@ -81,11 +85,10 @@ public class PersonModel extends AbstractTableModel
 	}
 
 	@Override
-	//
-    public String getColumnName(int column) 
+        public String getColumnName(int column) 
 	{
-        return new String[]{"ID", "Lname", "Fname", "Age"}[column];
-    }  
+            return new String[]{"ID", "Lname", "Fname", "Age", "Photo"}[column];
+        }  
 	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
@@ -104,17 +107,12 @@ public class PersonModel extends AbstractTableModel
 	}
 	
 	@Override
-    public Class<?> getColumnClass(int columnIndex) {                                                               
-        return new Class[]{Integer.class, String.class, String.class, Integer.class, ImageIcon.class}[columnIndex];
-    }  	
+        public Class<?> getColumnClass(int columnIndex) {                                                               
+            return new Class[]{Integer.class, String.class, String.class, Integer.class, ImageIcon.class}[columnIndex];
+        }  	
     
 	@Override
 	public boolean isCellEditable(int arg0, int arg1) {
 		return false;
 	};
-	
-	
-	
-	
-	
 }

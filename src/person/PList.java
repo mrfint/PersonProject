@@ -22,13 +22,11 @@ public class PList{
     
     public void save() throws IOException, ExtenException {
         ADS ds = DSFactory.getInstance("xml");
-        ds.setfName("1.xml");
         ds.save(lst);
     }
 
     public void load() throws IOException, ExtenException {
         ADS ds = DSFactory.getInstance("xml");
-        ds.setfName("1.xml");
         lst = ds.load();
     }
 

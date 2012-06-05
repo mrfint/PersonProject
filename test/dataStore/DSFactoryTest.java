@@ -2,6 +2,7 @@ package dataStore;
 
 import dataStore.DSFactory;
 import dataStore.ADS;
+import except.ExtenException;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -20,16 +21,13 @@ public class DSFactoryTest {
 	@Parameters
 	public static Collection<Object[]> data() {
 		Object[][] data = new Object[][] {
-				{ "csv", "DS_CSV" }, 
-				{ "xml", "DS_XML" },
-				{ "json", "DS_JSON" },
-				{ "yaml", "DS_YAML" },
-				{ "test.xaml", null },
-                                { "d1xml", "DS_domXML1" },
-                                { "d2xml", "DS_domXML2" },
-                                { "mock", "DS_Mock" },
-                                {"net", "DS_Net_Client" },
-                                {"db", "DS_DB" },
+				{ "1.csv", "DS_CSV" }, 
+				{ "1.xml", "DS_XML" },
+				{ "1.json", "DS_JSON" },
+				{ "1.yaml", "DS_YAML" },
+				{ "1.db", "DS_DB" },
+                                { "1.mock", "DS_Mock" },
+                                { "1.net", "DS_Net_Client" },
 				};
 		return Arrays.asList(data);
 	}
@@ -40,13 +38,13 @@ public class DSFactoryTest {
 	}
 	
 	@Test
-	public void test() {
+	public void test() throws ExtenException {
 		ADS iDS = DSFactory.getInstance(type);
 		assertEquals(ds, iDS == null ? null : iDS.getClass().getSimpleName());
 	}
 
 	@Test
-	public void testSingleton() {
+	public void testSingleton() throws ExtenException {
 		assertEquals(DSFactory.getInstance(type), DSFactory.getInstance(type));
 	}
 }

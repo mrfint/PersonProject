@@ -15,7 +15,7 @@ public class DS_XML extends ADS{
     @Override
     public void save(List<Person> lst) throws IOException
     {
-        FileWriter out = new FileWriter(super.getfName());
+        FileWriter out = new FileWriter(ADS.fName);
         out.write("<document>\r\n");
         for(int i=0; i<lst.size(); i++){
             String type = lst.get(i).getClass().getSimpleName();
@@ -28,7 +28,7 @@ public class DS_XML extends ADS{
     @Override
     public List<Person> load() throws IOException{
         IConvert converter = null;
-        BufferedReader in = new BufferedReader(new FileReader(super.getfName()));
+        BufferedReader in = new BufferedReader(new FileReader(ADS.fName));
         List<Person> lst = new ArrayList<Person>();
         String s = in.readLine();
        
