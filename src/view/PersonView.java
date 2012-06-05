@@ -25,17 +25,6 @@ public class PersonView extends JFrame
 	
 	JFileChooser fc = new JFileChooser();
 	
-	//Components
-	Button FromDB = new Button("From DB");
-	Button FromXML = new Button("FromXML");
-	Button FromCSV = new Button("FromCSV");
-	Button FromJson = new Button("FromJson");
-	Button remove = new Button("Delete");
-	Button SaveFile = new Button("Save to File");
-	Button SaveDB = new Button("Save to DB");
-	Button Cancel = new Button("Cancel");
-	Button ToDB = new Button("ToDB");
-	Button FrDB = new Button("FrDB");
 	JTable table;
 	
 	
@@ -58,16 +47,7 @@ public class PersonView extends JFrame
 		GridLayout gl = new GridLayout(2, 0, 5, 5);
 		buttons.setLayout(gl);
 				
-		buttons.add(FromDB);
-		buttons.add(FromXML);
-		buttons.add(FromCSV);
-		buttons.add(FromJson);
-		buttons.add(ToDB);
-		buttons.add(FrDB);
-		buttons.add(SaveFile);
-		buttons.add(SaveDB);
-		buttons.add(remove);
-		buttons.add(Cancel);
+	
 				
 		getContentPane().add(buttons, "South");
 		
@@ -78,66 +58,7 @@ public class PersonView extends JFrame
 		this.setLocation(300, 200);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-		
-
-	public	void addButtonFrDBListener(ActionListener frdb)
-		{
-			FrDB.addActionListener(frdb);
-		}
-		
-	public	void addButtonToDBListener(ActionListener todb)
-		{
-			ToDB.addActionListener(todb);
-		}
-		
-		//
 	
-	public	void addButtonFromDBListener(ActionListener fdb)
-		{
-			FromDB.addActionListener(fdb);
-                }
-		
-		//Listener of FromXML Button
-	public	void addButtonFromXMListener(ActionListener fxm)
-		{
-			FromXML.addActionListener(fxm);
-		}
-		
-		//Listener of FromCSV Button
-	public	void addButtonFromCSVListener(ActionListener fcs)
-		{
-			FromCSV.addActionListener(fcs);
-		}
-		
-		//Listener of FromJson Button
-	public	void addButtonFromJsonListener(ActionListener fjs)
-		{
-			FromJson.addActionListener(fjs);
-		}
-		
-		//Listener of Delete Button
-	public	void addButtonDeleteListener(ActionListener dlt)
-		{
-			remove.addActionListener(dlt);
-		}
-		
-		//Listener of SaveFile Button
-	public	void addButtonSaveFileListener(ActionListener sfl)
-		{
-			SaveFile.addActionListener(sfl);
-		}
-		
-		//Listener of SaveDB Button
-	public	void addButtonSaveDBListener(ActionListener sdb)
-		{
-			SaveDB.addActionListener(sdb);
-		}
-		
-		//Listener of Cancel Button
-	public	void addButtonCancelListener(ActionListener ext)
-		{
-			Cancel.addActionListener(ext);
-		}
 		
 		
 		//***Mouse Listeners

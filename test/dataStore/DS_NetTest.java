@@ -25,8 +25,8 @@ public class DS_NetTest {
     public static Collection<Object[]> generateData()
     {
         Object[][] data = new Object[][] {
-                     //   { PersonMain.initList0() }, 
-                     //   { PersonMain.initList1() },
+//                        { PersonMain.initList0() }, 
+//                        { PersonMain.initList1() },
                         { PersonMain.initListM() },
        };
     return Arrays.asList(data);
@@ -36,6 +36,6 @@ public class DS_NetTest {
         
       DSFactory.getInstance("net").save(lst.getList());
      
-      //assertEquals(lst.getList(), DSFactory.getInstance("net").load());
+      assertEquals(lst.getList(), DSFactory.getInstance("net").load());
     }
 }

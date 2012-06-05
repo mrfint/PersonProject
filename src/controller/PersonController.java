@@ -31,17 +31,6 @@ public class PersonController {
 		 m_view = view;
 		 
 		 
-		//Add listeners to the view.
-                 
-		view.addButtonFromDBListener(new ButtonFromDBListener());
-		view.addButtonFromXMListener(new ButtonFromXMListener());
-		view.addButtonFromCSVListener(new ButtonFromCSVListener());
-		view.addButtonDeleteListener(new ButtonDeleteListener());
-		view.addButtonSaveFileListener(new ButtonSaveFileListener());
-		view.addButtonSaveDBListener(new ButtonSaveDBListener());
-		view.addButtonCancelListener(new ButtonCancelListener());
-		view.addButtonFrDBListener(new ButtonFrDBListener());
-		view.addButtonToDBListener(new ButtonToDBListener());
 		
 		view.addTableMouseListener(new TAbleMouseListener());
 		
