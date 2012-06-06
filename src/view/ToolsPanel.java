@@ -16,7 +16,7 @@ import javax.swing.colorchooser.*;
     private JPanel panel=null;
     public ToolsPanel() {
 
-        this.setLayout(new GridLayout(0, 1));
+        super(new GridLayout(0, 1));
         for (int i = 0; i < capToolsShapes.length; i++) 
         {
             XButton b = new XButton(capToolsShapes[i],i);
@@ -24,7 +24,9 @@ import javax.swing.colorchooser.*;
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     XButton but = (XButton) e.getSource();
+                    MainFrame.curFigure = new Figure();
                     MainFrame.curFigure.setType(but.tag);
+                    //MainFrame.curFigure.repaint();
                 }
             });
             add(b);

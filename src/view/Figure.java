@@ -19,9 +19,8 @@ public class Figure extends JPanel
                                         , Serializable
                                          , FocusListener{
     protected int type=1;
-    private Color color=Color.black;
-    private int wl=1;
-    boolean f = false;
+    private Color color = ColorChooserPanel.INIT_Color;
+    private int wl = StrokeChooser.INIT_Stroke;
 
     public Figure() {
         super(null);
@@ -49,8 +48,9 @@ public class Figure extends JPanel
 
     @Override
     public void focusGained(FocusEvent e) {
+      
        Container parent = getParent();      
-
+       MainFrame.curFigure = this;
        Figure tmp= new CorrectFigure(this); 
        parent.add(tmp);
        tmp.requestFocusInWindow(); 
@@ -115,7 +115,8 @@ private class MouseHandler extends MouseAdapter{
          startPoint = e.getPoint();
          if ((e.getModifiersEx() & e.BUTTON1_DOWN_MASK ) != 0 & ((e.getClickCount()>1)||(MainFrame.curFigure.getType()==0) )){
 			current.requestFocusInWindow();
-                        MainFrame.curFigure.setType(0);
+                        
+                        //MainFrame.curFigure.setType(0);
 			
          }
          else if(MainFrame.curFigure.getType()!=0) 
@@ -135,6 +136,7 @@ private class MouseHandler extends MouseAdapter{
             {
                 fig.setBounds(startPoint.x, startPoint.y, w, h);
                 current.add(fig);
+                MainFrame.curFigure = fig;
             }
 
         }

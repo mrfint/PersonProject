@@ -14,15 +14,16 @@ import javax.swing.colorchooser.*;
                                 implements ChangeListener{
     
     private JColorChooser tcc = null;
-
+    public static Color INIT_Color = Color.black;
+    
     public ColorChooserPanel() {
         super(new FlowLayout());
+
         //**************** add ColorChooser
         tcc = new JColorChooser();
         tcc.setPreviewPanel(new JPanel());
         tcc.getSelectionModel().addChangeListener(this);
-        setBorder(BorderFactory.createTitledBorder("Choose Color"));
-        tcc.setFocusable(false);
+        tcc.setBorder(BorderFactory.createTitledBorder("Choose Color"));
         tcc.setBounds(0, 0, getWidth(), getHeight());
         add(tcc);
         
@@ -30,8 +31,9 @@ import javax.swing.colorchooser.*;
  
     @Override
     public void stateChanged(ChangeEvent e) {
-        MainFrame.curFigure.setColor(tcc.getColor());
-        
+        ColorChooserPanel.INIT_Color = tcc.getColor();
+        MainFrame.curFigure.setColor(INIT_Color);
+        MainFrame.curFigure.repaint();
     }
     
     

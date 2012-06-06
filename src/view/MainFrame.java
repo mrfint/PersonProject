@@ -23,10 +23,11 @@ public class MainFrame extends JFrame{
     private String[] discMenuFileEn={"Clear canvas","Save file as...","Load file...","Exit application"};
  
     public static final int DEFAULT_WIDTH=1500;
-    public static final int DEFAULT_HEIGHT=500;
-    public static JPanel drawHolst = null;
+    public static final int DEFAULT_HEIGHT=700;
+    public static Figure drawHolst = null;
     public static Figure curFigure = new Figure();
-  
+    public static int typeTools = 1;
+    
     public MainFrame(){
         //Create and set up the window.
         super("MyPaint");
@@ -36,7 +37,6 @@ public class MainFrame extends JFrame{
         setJMenuBar(this.createMenuBar());
         //Create and set up the content pane.
         addContentPane(getContentPane());
-        
     }
 
     public void addListenersMenuFile(Action[] MenuListener)
@@ -96,6 +96,7 @@ public class MainFrame extends JFrame{
         jpTop.add(leftMainPanel, BorderLayout.WEST);
         // Init holst
         drawHolst = new Figure();
+        drawHolst.setWl(0);
         drawHolst.setBackground(Color.white);
         drawHolst.setOpaque(true);
         drawHolst.setFocusable(false);

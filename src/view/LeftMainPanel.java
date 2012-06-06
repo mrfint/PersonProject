@@ -21,10 +21,13 @@ import javax.swing.colorchooser.*;
         JPanel pan = new JPanel(new GridLayout(0, 1));
         
         //**************** add ColorChooser
-        pan.add(new ColorChooserPanel());
+        pan.add(new ColorChooserPanel(), BorderLayout.PAGE_END);
         
         //**************** add StrokeChoser
         pan.add(new StrokeChooser());
+        
+        //**************** add StrokeChoser
+        pan.add(new DecorChooser());
         
         add(pan , BorderLayout.CENTER);
          

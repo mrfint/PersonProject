@@ -10,6 +10,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import view.Figure;
+import view.MainFrame;
 
 public class CorrectFigure extends Figure{
     
@@ -20,7 +21,6 @@ public class CorrectFigure extends Figure{
         super();
         this.figure = a;
         mlResize = new MouseResizeHandler(this);
-        setType(figure.getType());
         setBounds(figure.getX(), figure.getY(), figure.getWidth(), figure.getHeight());
         addCorrectionPanels();
         add(figure);
@@ -41,6 +41,8 @@ public class CorrectFigure extends Figure{
          parent.add(tmp);
          tmp.setLocation(getX(),getY());
          parent.remove(this);
+         
+        // MainFrame.curFigure = new Figure();
     }
     private void addCorrectionPanels() {
         for (int i = 0; i < 9; i++) {

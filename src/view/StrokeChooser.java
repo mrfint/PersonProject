@@ -16,19 +16,20 @@ import javax.swing.event.ChangeListener;
 class StrokeChooser extends JPanel implements ChangeListener{
     static final int FPS_MIN = 0;
     static final int FPS_MAX = 30;
-    static final int FPS_INIT = 5; 
-       
+    static final int FPS_INIT = 10; 
+    
+    public static int INIT_Stroke = 5;
     
     JSlider framesPerSecond;
     
     public StrokeChooser() 
     {
         super(new BorderLayout());
-                
+        MainFrame.curFigure.setWl(FPS_INIT);        
       
         framesPerSecond = new JSlider(JSlider.HORIZONTAL,
                                       FPS_MIN, FPS_MAX, FPS_INIT);
-        
+        setFocusable(false);
 
         //Turn on labels at major tick marks.
         framesPerSecond.setMajorTickSpacing(10);
@@ -51,6 +52,9 @@ class StrokeChooser extends JPanel implements ChangeListener{
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        MainFrame.curFigure.setWl(framesPerSecond.getValue());
+        INIT_Stroke = framesPerSecond.getValue();
+        
+        MainFrame.curFigure.setWl(INIT_Stroke);
+        MainFrame.curFigure.repaint();
     }
 }
