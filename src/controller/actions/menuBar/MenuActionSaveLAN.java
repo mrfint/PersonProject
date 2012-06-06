@@ -22,8 +22,6 @@ public class MenuActionSaveLAN extends AbstractAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         cont.getM_model().save("storage.net"); 
-        cont.getM_view().showData();     
-       
     }
 
 }

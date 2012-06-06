@@ -24,7 +24,6 @@ public class MenuActionSaveAs extends AbstractAction{
         File f = cont.getM_view().getFileWithAsk("Save");
             
         cont.getM_model().save(f.toString()); 
-        cont.getM_view().showData();     
        
     }
 

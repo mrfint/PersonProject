@@ -22,8 +22,6 @@ public class MenuActionSaveDB extends AbstractAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         cont.getM_model().save("storage.db"); 
-        cont.getM_view().showData();     
-       
     }
 
 }

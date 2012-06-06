@@ -32,6 +32,21 @@ public class PersonController {
                 m_view = view;
 
                 m_view.addListenersMenuFile( initMenuFileListeners( m_view.getCaptionEn() ) );
+                
+                m_view.addAddRemoveListeners(
+                        new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                m_model.addRow();
+                            }
+                        }, new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                m_model.deleteRow(m_view.getTable().getSelectedRow());
+                            }
+                        });
                
             //view.addTableMouseListener(new TAbleMouseListener());
 

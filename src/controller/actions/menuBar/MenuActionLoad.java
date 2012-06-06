@@ -27,7 +27,6 @@ public class MenuActionLoad extends AbstractAction{
             File f = cont.getM_view().getFileWithAsk("Load");
             
             cont.getM_model().load(f.toString()); 
-            cont.getM_view().showData();
     }
 
     

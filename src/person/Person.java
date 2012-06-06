@@ -2,6 +2,7 @@
 package person;
 
 import java.io.Serializable;
+import javax.swing.ImageIcon;
 
 public class Person implements Comparable<Person>, Cloneable,
                                         Serializable
@@ -10,16 +11,20 @@ public class Person implements Comparable<Person>, Cloneable,
     protected String fn;
     protected String ln;
     protected int age;
+    protected String im;
+    protected String ph;
 
     public Person() {
     }
     
     
-    public Person(int id, String fn, String ln, int age) {
+    public Person(int id, String fn, String ln, int age, String im, String ph) {
         this.id = id;
         this.fn = fn;
         this.ln = ln;
         this.age = age;
+        this.im = im;
+        this.ph = ph;
     }
     
     public Person(String id, String fn, String ln, String age) {
@@ -27,6 +32,8 @@ public class Person implements Comparable<Person>, Cloneable,
         this.fn = fn;
         this.ln = ln;
         this.age = Integer.parseInt(age);
+        this.im = im;
+        this.ph = ph;
     }
 
     public int getAge() {
@@ -60,8 +67,22 @@ public class Person implements Comparable<Person>, Cloneable,
     public void setLn(String ln) {
         this.ln = ln;
     }
-    
-    
+
+    public String getIm() {
+        return im;
+    }
+
+    public void setIm(String im) {
+        this.im = im;
+    }
+
+    public String getPh() {
+        return ph;
+    }
+
+    public void setPh(String ph) {
+        this.ph = ph;
+    }
     
     @Override
     public int compareTo(Person o){

@@ -25,7 +25,6 @@ public class MenuActionLoadFromLAN extends AbstractAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         cont.getM_model().load("storage.net"); 
-	cont.getM_view().showData();
       
     }
 

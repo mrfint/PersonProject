@@ -25,7 +25,6 @@ public class MenuActionLoadFromDB extends AbstractAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         cont.getM_model().load("storage.db"); 
-	cont.getM_view().showData();
       
     }
 

@@ -25,6 +25,9 @@ public class MainFrame extends JFrame{
     
     public static final int DEFAULT_WIDTH=400;
     public static final int DEFAULT_HEIGHT=500;
+    private JPanel  jpFace;
+    private JButton btAdd;
+    private JButton btRemove;
     
     public MainFrame(PersonModel model){
         //Create and set up the window.
@@ -78,14 +81,37 @@ public class MainFrame extends JFrame{
 
     private void addContentPane(Container contentPane) {
         
+        // Add Table
+        // jpFace = new JPanel();
+        
         table = new JTable();
         table.setModel(tmodel);
         
         table.setRowHeight(50);
 		
-	add(new JScrollPane(table));
-		
-	table.setDefaultEditor(String.class, null);
+        // Init buttons
+        btAdd  = new JButton("Add");
+        btRemove = new JButton("Remove");
+        
+        // Width buttons are same
+        JPanel grid = new JPanel( new GridLayout(1, 2, 15, 0) );
+        grid.add( btAdd );
+        grid.add( btRemove);
+ 
+        JPanel jpDnButtons = new JPanel( new FlowLayout() );
+        jpDnButtons.add(grid);
+        
+        // Add table and buttons
+        contentPane.add(jpDnButtons, BorderLayout.SOUTH);
+        contentPane.add(new JScrollPane(table), BorderLayout.CENTER);
+        
+        
+    }
+    
+    public void addAddRemoveListeners(ActionListener as, ActionListener al){
+        
+        btAdd.addActionListener(as);
+        btRemove.addActionListener(al);
         
     }
 
@@ -109,11 +135,11 @@ public class MainFrame extends JFrame{
         
         return res;
     }
-    //Show data at the Table
-    public  void showData() 
-    {
-            table.revalidate();
+
+    public JTable getTable() {
+        return table;
     }
+    
     
 }
 
