@@ -1,135 +1,67 @@
 package controller;
 
-import dataStore.ADS;
+import controller.actions.menuBar.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Action;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import model.PersonModel;
+import view.MainFrame;
 import view.PersonView;
 
 
 public class PersonController {
 	
-	//The Controller needs to interact with both the Model and View.
-	PersonModel m_model;
-	PersonView m_view;
-	ADS ds;
-	List<String> res = new ArrayList<String>();
-	String [] item = null;
-	
-	
-	
-	public PersonController (PersonModel model, PersonView view)
-	{
-		 m_model = model;
-		 m_view = view;
-		 
-		 
-		
-		view.addTableMouseListener(new TAbleMouseListener());
-		
-	}
-		
-		//inner class ButtonFromDBListener
-		
-		//Backand
-		class ButtonFrDBListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				m_model.Load(".DB"); 
-				m_view.ShowData();	
-			}
-		}
-		
-		class ButtonToDBListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				
-				m_model.Save(".toDB");
-				
-			}
-		}
-	
-		class ButtonFromDBListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				m_model.Load(".DB");
-				m_view.ShowData();	
-			}
-		}
-		//inner class ButtonFromXMListener
-		class ButtonFromXMListener implements ActionListener
-		{
-			
-			public void actionPerformed(ActionEvent e)
-			{
-				m_model.Load("D:\\Temp\\MVC\\resXML.xml");
-				m_view.ShowData();	
-			}
-		}
-		
-		//inner class ButtonFromCSVistener
-		class ButtonFromCSVListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				m_model.Load("D:\\Temp\\MVC\\resCSV.csv");
-				m_view.ShowData();	
-			}
-		}
-		
-		//inner class ButtonDeleteListener
-		class ButtonDeleteListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				//m_view.ResetTable();
-			}
-		}
-		
-		//inner class ButtonSaveFileListener
-		class ButtonSaveFileListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				m_view.FileChoice();
-			}
-		}
-		
-		//inner class ButtonSaveFileListener
-		class ButtonSaveDBListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				m_model.Save(".DB");
-				int res=0;
-				if (res == JFileChooser.APPROVE_OPTION) 
-				{
-					JOptionPane.showMessageDialog(m_view, "Данные сохраненны");
-				}
-			}
-		}
-		
-		//inner class ButtonCancelListener
-		class ButtonCancelListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				m_view.CancelPersonView();
-			}
-		}
+    private PersonModel m_model;
+    private MainFrame m_view;
+    private Action[] arr = null;
+
+    List<String> res = new ArrayList<String>();
+    String [] item = null;
+
+    public PersonController (PersonModel model, MainFrame view)
+    {
+                m_model = model;
+                m_view = view;
+
+                m_view.addListenersMenuFile( initMenuFileListeners( m_view.getCaptionEn() ) );
+               
+            //view.addTableMouseListener(new TAbleMouseListener());
+
+    }
+
+    private Action[] initMenuFileListeners(String[] captionEn) {
+         arr = new  Action[captionEn.length]; 
+            arr[0] = new MenuActionSaveAs (captionEn[0], this);
+            arr[1] = new MenuActionLoad   (captionEn[1], this);
+            arr[2] = new MenuActionSaveLAN(captionEn[2], this);
+            arr[3] = new MenuActionSaveDB (captionEn[3], this);
+            arr[4] = new MenuActionLoadFromLAN(captionEn[4], this);
+            arr[5] = new MenuActionLoadFromDB (captionEn[5], this);
+            arr[6] = new MenuActionExit  (captionEn[6]);
+         return arr;
+    }
+
+    
+
+    public PersonModel getM_model() {
+        return m_model;
+    }
+
+    public MainFrame getM_view() {
+        return m_view;
+    }
+
 		
 		//inner class TAbleMouseListener
-		class TAbleMouseListener implements MouseListener
+		class TableMouseListener extends MouseAdapter
 		{
 			@Override
 			public void mouseClicked(MouseEvent e)
@@ -137,35 +69,13 @@ public class PersonController {
 				 if (e.getClickCount() == 2)
 		         {
 		         	//Insert form
-					 m_view.InsRowToFrm();
+				//	 m_view.InsRowToFrm();
 		         }
 		         
 			}
 			
 
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
+			
 		}
 		
 		

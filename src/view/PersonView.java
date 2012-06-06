@@ -22,11 +22,8 @@ import model.PersonModel;
 public class PersonView extends JFrame
 {
 	PersonModel tmodel;
-	
 	JFileChooser fc = new JFileChooser();
-	
 	JTable table;
-	
 	
 	//Constructor
 	public PersonView (PersonModel model)
@@ -34,86 +31,70 @@ public class PersonView extends JFrame
 		tmodel = model;		
 		table = new JTable();
 		
-		
-				
 		table.setModel(tmodel);
 		table.setRowHeight(50);
 		
 		getContentPane().add(new JScrollPane(table));
 		
-		JPanel buttons = new JPanel();
-		
-		//Table(grid) buttons
-		GridLayout gl = new GridLayout(2, 0, 5, 5);
-		buttons.setLayout(gl);
-				
-	
-				
-		getContentPane().add(buttons, "South");
-		
 		table.setDefaultEditor(String.class, null);
 		this.setTitle("Person");
 		this.setSize(400, 300);
-		this.setVisible(true);
 		this.setLocation(300, 200);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	
 		
-		
-		//***Mouse Listeners
+        //***Mouse Listeners
 	public  void addTableMouseListener(MouseListener mse)
-		{
-			table.addMouseListener(mse);
-		}
-		
-		//Cancel PersonView
-		public void CancelPersonView()
-		{
-			dispose();
-		}
+        {
+                table.addMouseListener(mse);
+        }
+
+        //Cancel PersonView
+        public void CancelPersonView()
+        {
+                dispose();
+        }
 
 		
 	//Show data at the Table
 	public  void ShowData() 
-		{
-			
-			table.revalidate();
-		
-		}
+        {
+                table.revalidate();
+        }
+        
 	// Insert Data to Edit Form (frmPerson)
-	public void InsRowToFrm() 
-                {
-			//frmPerson pers = new frmPerson(PersonView.this, tmodel);
+	public void insertRowToFrm() 
+        {
+                //frmPerson pers = new frmPerson(PersonView.this, tmodel);
 
-			String resultId = "";
-			String resultFn = "";
-			String resultLn = "";
-			String resultAge = "";
+                String resultId = "";
+                String resultFn = "";
+                String resultLn = "";
+                String resultAge = "";
 
-			int[] selectedRows = table.getSelectedRows();
-			for (int i = 0; i < selectedRows.length; i++) {
-				int selIndex = selectedRows[i];
+                int[] selectedRows = table.getSelectedRows();
+                for (int i = 0; i < selectedRows.length; i++) {
+                        int selIndex = selectedRows[i];
 
-				Object valueID = tmodel.getValueAt(selIndex, 0);
-				Object valueFname = tmodel.getValueAt(selIndex, 1);
-				Object valueLname = tmodel.getValueAt(selIndex, 2);
-				Object valueAge = tmodel.getValueAt(selIndex, 3);
-				Object valuePh = tmodel.getValueAt(selIndex, 4);
+                        Object valueID = tmodel.getValueAt(selIndex, 0);
+                        Object valueFname = tmodel.getValueAt(selIndex, 1);
+                        Object valueLname = tmodel.getValueAt(selIndex, 2);
+                        Object valueAge = tmodel.getValueAt(selIndex, 3);
+                        Object valuePh = tmodel.getValueAt(selIndex, 4);
 
-				resultId = resultId + valueID;
-				resultFn = resultFn + valueFname;
-				resultLn = resultLn + valueLname;
-				resultAge = resultAge + valueAge; 
+                        resultId = resultId + valueID;
+                        resultFn = resultFn + valueFname;
+                        resultLn = resultLn + valueLname;
+                        resultAge = resultAge + valueAge; 
 
 
-			}
+                }
 //			pers.getFieldFn().setText(resultFname);
 //			pers.getFieldLn().setText(resultLname);
 //			pers.getFieldId().setText(resultID);
 //			pers.getFieldAg().setText(resultAge);
 //			pers.getLabelPh().setIcon(imageTab);
-		}
+        }
 		
 				
 		public void FileChoice ()
@@ -134,7 +115,7 @@ public class PersonView extends JFrame
 				File file = fc.getSelectedFile();
 
 				// Save file for absolute path
-				tmodel.Save(file.getAbsolutePath());
+				tmodel.save(file.getAbsolutePath());
 
 				JOptionPane.showMessageDialog(PersonView.this, "Файл сохранен");
 			}

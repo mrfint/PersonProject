@@ -8,7 +8,7 @@ public class DSFactory {
 
     private static Map mp = null;
 
-    public static ADS getInstance(String fName) throws ExtenException
+    public synchronized static ADS getInstance(String fName) throws ExtenException
     {   
 
         if(mp==null)

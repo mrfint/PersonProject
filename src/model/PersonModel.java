@@ -18,10 +18,9 @@ import person.Person;
 
 public class PersonModel extends AbstractTableModel
 {
-	
 	private List<Person> plist = new ArrayList<Person>();
 	
-	public void Save (String Fname)
+	public void save (String Fname)
 	{
             try {
                 DSFactory.getInstance(Fname).save(plist);
@@ -34,7 +33,7 @@ public class PersonModel extends AbstractTableModel
 	}
 	
 	
-	public void Load(String Fname)
+	public void load(String Fname)
         {	        
             try {
                 plist = DSFactory.getInstance(Fname).load();
@@ -75,12 +74,11 @@ public class PersonModel extends AbstractTableModel
 	{
 		return 5;
 	}
-
+	
+        //Get RowCount at the jTable 
 	@Override
-	//Get RowCount at the jTable 
 	public int getRowCount() 
 	{
-		
 		return plist.size();
 	}
 
@@ -93,14 +91,14 @@ public class PersonModel extends AbstractTableModel
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
-		case 0:
-			return plist.get(rowIndex).getId();
-		case 1:
-			return plist.get(rowIndex).getLn();
-		case 2:
-			return plist.get(rowIndex).getFn();
-		case 3:
-			return plist.get(rowIndex).getAge();	
+                    case 0:
+                            return plist.get(rowIndex).getId();
+                    case 1:
+                            return plist.get(rowIndex).getLn();
+                    case 2:
+                            return plist.get(rowIndex).getFn();
+                    case 3:
+                            return plist.get(rowIndex).getAge();	
 		}
 		return null;
 		
@@ -108,7 +106,7 @@ public class PersonModel extends AbstractTableModel
 	
 	@Override
         public Class<?> getColumnClass(int columnIndex) {                                                               
-            return new Class[]{Integer.class, String.class, String.class, Integer.class, ImageIcon.class}[columnIndex];
+                return new Class[]{Integer.class, String.class, String.class, Integer.class, ImageIcon.class}[columnIndex];
         }  	
     
 	@Override

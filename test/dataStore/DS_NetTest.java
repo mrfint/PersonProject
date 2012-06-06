@@ -26,17 +26,18 @@ public class DS_NetTest {
     public static Collection<Object[]> generateData()
     {
         Object[][] data = new Object[][] {
-//                        { PersonMain.initList0() }, 
-//                        { PersonMain.initList1() },
+                        { PersonMain.initList0() }, 
+                        { PersonMain.initList1() },
                         { PersonMain.initListM() },
        };
     return Arrays.asList(data);
     } 
     @Test
-    public void testSaveLoadNet() throws IOException, ExtenException {
+    public void testSaveLoadNet() throws IOException, ExtenException, InterruptedException {
         
-      DSFactory.getInstance("1.net").save(lst.getList());
-     
-      assertEquals(lst.getList(), DSFactory.getInstance("1.net").load());
+      ADS ads = DSFactory.getInstance("1.net");
+      ads.save(lst.getList());
+      Thread.sleep(1000);
+      assertEquals(lst.getList(), ads.load());
     }
 }
