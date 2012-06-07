@@ -27,7 +27,7 @@ public class Person implements Comparable<Person>, Cloneable,
         this.ph = ph;
     }
     
-    public Person(String id, String fn, String ln, String age) {
+    public Person(String id, String fn, String ln, String age, String im, String ph) {
         this.id = Integer.parseInt(id);
         this.fn = fn;
         this.ln = ln;

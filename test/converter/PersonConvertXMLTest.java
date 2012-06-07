@@ -13,7 +13,7 @@ public class PersonConvertXMLTest {
     Person o1 = null;
 
     public PersonConvertXMLTest() {
-        o1 = new Person(0,"Gary","Portman",30);
+        o1 = new Person(0,"Gary","Portman",30,"user.jpg","75964");
     }
         
     @Test

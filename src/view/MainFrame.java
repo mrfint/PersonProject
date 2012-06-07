@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import dataStore.DSFactory;
+import java.awt.event.MouseListener;
 import model.PersonModel;
 
 public class MainFrame extends JFrame{
@@ -136,10 +137,18 @@ public class MainFrame extends JFrame{
         return res;
     }
 
-    public JTable getTable() {
-        return table;
+
+    public void addTableMouseListener(MouseListener tableMouseListener) {
+        table.addMouseListener(tableMouseListener);
     }
     
+    public int getTableSelectedRow(){
+        return table.getSelectedRow();
+    }
+
+    public int getTableSelectedCol() {
+        return table.getSelectedColumn();
+    }
     
 }
 

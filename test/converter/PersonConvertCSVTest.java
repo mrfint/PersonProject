@@ -13,17 +13,17 @@ public class PersonConvertCSVTest {
 
     public PersonConvertCSVTest() 
     {
-        o1 = new Person(0,"Gary","Portman",30);
+        o1 = new Person(0,"Gary","Portman",30,"user.jpg","");
     }
         
     @Test
     public void testToString() 
     {
-        assertEquals(t.toString(o1), "Person;0;Gary;Portman;30;\r\n");
+        assertEquals(t.toString(o1), "Person;0;Gary;Portman;30;user.jpg;;\r\n");
     }
     
     @Test
     public void testFromString(){
-        assertEquals(t.fromString("Person;0;Gary;Portman;30;\r\n"), o1);
+        assertEquals(t.fromString("Person;0;Gary;Portman;30;user.jpg;;\r\n"), o1);
     }
 }

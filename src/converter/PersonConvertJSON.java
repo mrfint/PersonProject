@@ -17,7 +17,9 @@ public class PersonConvertJSON implements IConvert{
             sb.append("\"id\":\"").append(t.getId()).append("\",");
             sb.append("\"fn\":\"").append(t.getFn()).append("\",");
             sb.append("\"ln\":\"").append(t.getLn()).append("\",");
-            sb.append("\"age\":\"").append(t.getAge()).append("\"");
+            sb.append("\"age\":\"").append(t.getAge()).append("\",");
+            sb.append("\"image\":\"").append(t.getIm()).append("\",");
+            sb.append("\"phones\":\"").append(t.getPh()).append("\"");
         sb.append("}");
         
         return sb.toString();
@@ -27,7 +29,7 @@ public class PersonConvertJSON implements IConvert{
     public Person fromString(String s) 
     {
        Person t = new Person(FindField.tagsJSON(s, "id"),FindField.tagsJSON(s, "fn"),FindField.tagsJSON(s, "ln"),
-                        FindField.tagsJSON(s, "age"));
+                        FindField.tagsJSON(s, "age"), FindField.tagsJSON(s, "image"), FindField.tagsJSON(s, "phones"));
 
        return t;
     }

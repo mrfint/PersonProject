@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -28,28 +30,39 @@ public class PersonController {
 
     public PersonController (PersonModel model, MainFrame view)
     {
-                m_model = model;
-                m_view = view;
+        m_model = model;
+        m_view  = view;
 
-                m_view.addListenersMenuFile( initMenuFileListeners( m_view.getCaptionEn() ) );
-                
-                m_view.addAddRemoveListeners(
-                        new ActionListener() {
+        m_view.addListenersMenuFile( initMenuFileListeners( m_view.getCaptionEn() ) );
 
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                m_model.addRow();
-                            }
-                        }, new ActionListener() {
+        m_view.addAddRemoveListeners(
+                new ActionListener() {
+                    // *********** AddRowListener
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        m_model.addRow();
+                    }
+                }, new ActionListener() {
+                    // *********** DeleteRowListener
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        m_model.deleteRow(m_view.getTableSelectedRow());
+                    }
+                });
 
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                m_model.deleteRow(m_view.getTable().getSelectedRow());
-                            }
-                        });
-               
-            //view.addTableMouseListener(new TAbleMouseListener());
-
+        m_view.addTableMouseListener(new MouseAdapter() {
+                    // *********** MouseClickImageListener
+                    @Override
+                    public void mouseClicked(MouseEvent e)
+                    {
+                        if ((e.getClickCount() == 2) &&  
+                                (m_view.getTableSelectedCol() == m_model.PI_COL))
+                        {
+                            File filename = m_view.getFileWithAsk("Load");
+                            m_model.setValueImage(filename.toString(), m_view.getTableSelectedRow(), m_model.PI_COL);
+                        }
+                    }
+        });
     }
 
     private Action[] initMenuFileListeners(String[] captionEn) {
@@ -64,8 +77,6 @@ public class PersonController {
          return arr;
     }
 
-    
-
     public PersonModel getM_model() {
         return m_model;
     }
@@ -73,27 +84,6 @@ public class PersonController {
     public MainFrame getM_view() {
         return m_view;
     }
-
-		
-		//inner class TAbleMouseListener
-		class TableMouseListener extends MouseAdapter
-		{
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				 if (e.getClickCount() == 2)
-		         {
-		         	//Insert form
-				//	 m_view.InsRowToFrm();
-		         }
-		         
-			}
-			
-
-			
-		}
-		
-		
-	}
+}
 
 

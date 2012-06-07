@@ -18,6 +18,8 @@ public class PersonConvertCSV implements IConvert{
             sb.append(t.getFn()).append(';');
             sb.append(t.getLn()).append(';');
             sb.append(t.getAge()).append(';');
+            sb.append(t.getIm()).append(';');
+            sb.append(t.getPh()).append(';');
         sb.append("\r\n");
         
         return sb.toString();
@@ -27,7 +29,7 @@ public class PersonConvertCSV implements IConvert{
     public Person fromString(String s) 
     {   
         String[] q= s.split(";"); 
-        Person t = new Person(q[1],q[2],q[3],q[4]);
+        Person t = new Person(q[1],q[2],q[3],q[4],q[5],q[6]);
 
        return t;
     }

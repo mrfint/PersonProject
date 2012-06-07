@@ -50,12 +50,15 @@ public class PersonModel extends AbstractTableModel
 	}
 	
 	
-	public void load(String Fname)
+	public void load(String fname)
         {	        
             try {
+                if(fname!=null)
+                {
+                    plist = DSFactory.getInstance(fname).load();
+                    fireTableDataChanged();
+                }
                 
-                plist = DSFactory.getInstance(Fname).load();
-                fireTableDataChanged();
                 
             } catch (IOException ex) {
                 Logger.getLogger(PersonModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -161,6 +164,13 @@ public class PersonModel extends AbstractTableModel
                         break;
             }
     }
+    public void setValueImage(String aValue, int rowIndex, int columnIndex) {
+       
+        Person p = plist.get(rowIndex);
+
+        p.setIm((String) aValue);
+
+    }
 	
     @Override
     public Class<?> getColumnClass(int columnIndex) {                                                               
@@ -189,7 +199,7 @@ public class PersonModel extends AbstractTableModel
         }
     }
 
-    private ImageIcon convertImagee(String url) {
+    public ImageIcon convertImagee(String url) {
         Image img = (new ImageIcon(url)).getImage();  
         BufferedImage bi = new BufferedImage(60, 50, BufferedImage.TYPE_INT_ARGB);  
         Graphics g = bi.createGraphics();  
