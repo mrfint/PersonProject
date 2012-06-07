@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 import dataStore.DSFactory;
+import javax.swing.JOptionPane;
 
 public class MenuActionSaveLAN extends AbstractAction{
     PersonController cont = null;
@@ -22,6 +23,7 @@ public class MenuActionSaveLAN extends AbstractAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         cont.getM_model().save("storage.net"); 
+        JOptionPane.showMessageDialog(cont.getM_view(), "Data is sended");
     }
 
 }

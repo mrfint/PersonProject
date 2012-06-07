@@ -28,11 +28,13 @@ public class DS_DB extends ADS{
                                "(id INTEGER," +
                                 "fn VARCHAR(30)," +
                                 "ln VARCHAR(30)," +
-                                "age INTEGER" +
+                                "age INTEGER," +
+                                "im VARCHAR(100)," +
+                                "ph VARCHAR(30)" +
                                 ");" );
             
             PreparedStatement prepStat = conn.prepareStatement(
-                            "INSERT INTO Person VALUES (?, ?, ?, ?);");
+                            "INSERT INTO Person VALUES (?, ?, ?, ?, ?, ?);");
             
             for (Person person : ls) {
                     
@@ -40,7 +42,9 @@ public class DS_DB extends ADS{
                 prepStat.setString(2, person.getFn());
                 prepStat.setString(3, person.getLn());
                 prepStat.setInt(4, person.getAge());
-
+                prepStat.setString(5, person.getIm());
+                prepStat.setString(6, person.getPh());
+                
                 prepStat.execute();
             }
         } catch (SQLException ex) {
@@ -65,7 +69,8 @@ public class DS_DB extends ADS{
                     person.setFn(rs.getString("fn"));
                     person.setLn(rs.getString("ln"));
                     person.setAge(rs.getInt("age"));
-
+                    person.setIm(rs.getString("im"));
+                    person.setPh(rs.getString("ph"));
                     lst.add(person);
             }
         } catch (SQLException e) {
