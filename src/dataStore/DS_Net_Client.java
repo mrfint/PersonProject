@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import org.apache.commons.codec.binary.Base64;
 import person.Person;
 
 
@@ -42,6 +43,8 @@ public class DS_Net_Client extends ADS{
                 if(p.getIm()!=null)
                 { 
                     (new TransImage()).start();
+
+                    
                 }
             }
             
@@ -88,45 +91,58 @@ public class DS_Net_Client extends ADS{
             try {
                 socketIm = new Socket("localhost", 8189);
                 
-                //BufferedReader inStreamImFile = new BufferedReader(new FileReader(p.getIm()));
                 PrintWriter outIm = new PrintWriter(socketIm.getOutputStream(), true );
 
-                outIm.println("image");
-                //BufferedOutputStream imagebos = new BufferedOutputStream(socketIm.getOutputStream());  
+                outIm.println("save image");
+                outIm.println(p.getId());
                 
-                int c =0, i=0;  
-                FileInputStream infile = new FileInputStream(new File("user.jpg"));  
+                outIm.println( picToSting(p.getIm()) );
                 
-                File outputFile = new File("outagain.jpg");           
-                FileOutputStream outfile = new FileOutputStream(outputFile);    
                 
-                System.out.println("Client");     
-                while((c = infile.read())!=-1){  
-                    i++;    
-                //    imagebos.write(c);   
-                    outfile.write(c);  
-                }  
-                System.out.println(i+" Stuff");   
-                infile.close(); 
-                outfile.close();
-                //imagebos.flush();  
-                //imagebos.close();            
-                
-//                String str;
-//                while((str=inStreamImFile.readLine())!=null)
-//                {   
-//                    outIm.println(str);
-//                }
-                in.close();  
-                socketIm.close();
-                    
             } catch (UnknownHostException ex) {
                 Logger.getLogger(DS_Net_Client.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(DS_Net_Client.class.getName()).log(Level.SEVERE, null, ex);
             }
+                
+               
                     
         }
         
     }
+    
+    private String picToSting(String fileName) throws IOException {
+       
+        File myFile = new File (fileName);
+       
+        byte[] mybytearray  = new byte [(int)myFile.length()];
+       
+        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(myFile));
+        bis.read(mybytearray,0,mybytearray.length);
+        byte[] base64ByteArray = Base64.encodeBase64(mybytearray); 
+   
+       //System.out.println("Sending "+fileName+"...");
+       //EncryptionBean encr=new EncryptionBean();
+       //return encr.byteArrayToString(mybytearray);
+       
+        return new String(base64ByteArray);
+  }
+    
+     private void PStringToPic(String input) throws IOException {
+        //String picFileName = getPicFileName(input);
+
+       // String data = input.substring(8);
+
+        File myFile = new File("newUser.jpg");
+
+        byte[] mybytearrayTMP = input.getBytes();//"UTF-16"
+        byte[] mybytearray = Base64.decodeBase64(mybytearrayTMP);//"UTF-16"
+        FileOutputStream fos = new FileOutputStream(myFile);
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
+        bos.write(mybytearray, 0, mybytearray.length);
+        bos.close();
+
+        //return encr.byteArrayToString(mybytearray);
+    }
+
 }
