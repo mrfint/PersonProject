@@ -4,10 +4,7 @@ package dataStore;
 import converter.FactoryConvertI;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -22,6 +19,9 @@ import person.Person;
 
 public class DS_Net_Client extends ADS{
     private Socket s = null;
+    private Scanner in;
+    private PrintWriter out;
+    private Person p;
 
     @Override
     public void save(List<Person> lst) throws IOException {
@@ -30,38 +30,18 @@ public class DS_Net_Client extends ADS{
         {
             s = new Socket("localhost", 8189);
 
-            Scanner in = new Scanner(s.getInputStream());
-            PrintWriter out = new PrintWriter(s.getOutputStream(), true );
+            in = new Scanner(s.getInputStream());
+            out = new PrintWriter(s.getOutputStream(), true );
 
             out.println("save");           
             for(int i=0; i<lst.size(); i++){
-                Person p = lst.get(i);
+                p = lst.get(i);
                 String type = p.getClass().getSimpleName();
                 out.println(FactoryConvertI.getInstance("json", type).toString(p));
                 
                 if(p.getIm()!=null)
                 { 
-                    Socket si = new Socket("localhost", 8189);
-                    out.println("image");
-                    
-                    OutputStream os = null;
-                    ImageIcon imic = new ImageIcon(p.getIm());
-                    
-                    BufferedImage bImage = new BufferedImage(imic.getIconWidth(),imic.getIconHeight(), BufferedImage.TYPE_INT_RGB);
-                    bImage.getGraphics().drawImage(imic.getImage(), 0 , 0, null);
-                    
-                    bImage.getGraphics().drawImage(bImage, 0 , 0, null);
-                    try {
-                        os = si.getOutputStream();
-                        ImageIO.write(bImage, "jpg", os);
-                    } catch (IOException ex){
-                        ex.printStackTrace();
-                    } finally {
-                        if ( os != null ){
-                        try { os.close(); } catch (IOException ex){}
-                    }
-  }
-                    
+                    (new TransImage()).start();
                 }
             }
             
@@ -99,5 +79,54 @@ public class DS_Net_Client extends ADS{
         }
         
         return lst;
+    }
+    private class TransImage extends Thread{
+
+        @Override
+        public void run() {
+            Socket socketIm;
+            try {
+                socketIm = new Socket("localhost", 8189);
+                
+                //BufferedReader inStreamImFile = new BufferedReader(new FileReader(p.getIm()));
+                PrintWriter outIm = new PrintWriter(socketIm.getOutputStream(), true );
+
+                outIm.println("image");
+                //BufferedOutputStream imagebos = new BufferedOutputStream(socketIm.getOutputStream());  
+                
+                int c =0, i=0;  
+                FileInputStream infile = new FileInputStream(new File("user.jpg"));  
+                
+                File outputFile = new File("outagain.jpg");           
+                FileOutputStream outfile = new FileOutputStream(outputFile);    
+                
+                System.out.println("Client");     
+                while((c = infile.read())!=-1){  
+                    i++;    
+                //    imagebos.write(c);   
+                    outfile.write(c);  
+                }  
+                System.out.println(i+" Stuff");   
+                infile.close(); 
+                outfile.close();
+                //imagebos.flush();  
+                //imagebos.close();            
+                
+//                String str;
+//                while((str=inStreamImFile.readLine())!=null)
+//                {   
+//                    outIm.println(str);
+//                }
+                in.close();  
+                socketIm.close();
+                    
+            } catch (UnknownHostException ex) {
+                Logger.getLogger(DS_Net_Client.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(DS_Net_Client.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    
+        }
+        
     }
 }

@@ -102,7 +102,7 @@ public class Person implements Comparable<Person>, Cloneable,
 
     @Override
     public String toString() {
-        return "Person{" + "id=" + id + ", fn=" + fn + ", ln=" + ln + ", age=" + age + '}';
+        return "Person{" + "id=" + id + ", fn=" + fn + ", ln=" + ln + ", age=" + age + ", im=" + im + ", ph=" + ph + '}';
     }
-    
+  
 }

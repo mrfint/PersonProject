@@ -5,7 +5,6 @@ import java.io.IOException;
 import person.PList;
 import person.Person;
 
-
 class PersonMain{
     public static PList initList0() {
         PList list = new PList();
@@ -17,7 +16,7 @@ class PersonMain{
         PList list = new PList();
         PersonConvertCSV t = new PersonConvertCSV();
        
-        Person o = new Person(0,"Gary","Portman",30,"","");
+        Person o = new  Person(0,"Gary","Portman",30,"user.jpg","911");
         list.add(o);
         
         return list;
