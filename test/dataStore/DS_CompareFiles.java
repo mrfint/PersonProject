@@ -1,14 +1,15 @@
 
 package dataStore;
 
-import dataStore.DS_JSON;
-import dataStore.ADS;
+import model.dataStore.DSFactory;
+import model.dataStore.DS_JSON;
+import model.dataStore.ADS;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import dataStore.PersonMain;
-import except.ExtenException;
+import model.except.ExtenException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.zip.CheckedInputStream;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import person.PList;
+import model.person.PList;
 
 @RunWith(value=Parameterized.class)
 public class DS_CompareFiles {

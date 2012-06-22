@@ -1,8 +1,8 @@
 package dataStore;
 
-import dataStore.DSFactory;
-import dataStore.ADS;
-import except.ExtenException;
+import model.dataStore.DSFactory;
+import model.dataStore.ADS;
+import model.except.ExtenException;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;

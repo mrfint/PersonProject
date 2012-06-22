@@ -1,21 +1,22 @@
 
 package dataStore;
 
-import dataStore.DS_JSON;
-import dataStore.ADS;
+import model.dataStore.DSFactory;
+import model.dataStore.DS_JSON;
+import model.dataStore.ADS;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import dataStore.PersonMain;
-import except.ExtenException;
+import model.except.ExtenException;
 import java.util.Arrays;
 import java.util.Collection;
 import org.hamcrest.Factory;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import person.PList;
+import model.person.PList;
 
 @RunWith(value=Parameterized.class)
 public class DS_01M_blackBox {

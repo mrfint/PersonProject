@@ -1,11 +1,12 @@
 
 package converter;
 
+import model.converter.PersonConvertCSV;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import person.Person;
+import model.person.Person;
 
 public class PersonConvertCSVTest {
     PersonConvertCSV t = new PersonConvertCSV();

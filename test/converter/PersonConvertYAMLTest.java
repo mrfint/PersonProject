@@ -1,12 +1,13 @@
 
 package converter;
 
+import model.converter.PersonConvertYAML;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import person.Person;
+import model.person.Person;
 
 public class PersonConvertYAMLTest {
     PersonConvertYAML t = new PersonConvertYAML();

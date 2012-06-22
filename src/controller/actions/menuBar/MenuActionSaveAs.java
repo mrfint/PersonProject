@@ -2,7 +2,7 @@
 package controller.actions.menuBar;
 
 import controller.PersonController;
-import except.ExtenException;
+import model.except.ExtenException;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
-import dataStore.DSFactory;
+import model.dataStore.DSFactory;
 
 public class MenuActionSaveAs extends AbstractAction{
     PersonController cont = null;

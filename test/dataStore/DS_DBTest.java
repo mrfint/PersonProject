@@ -1,6 +1,7 @@
 package dataStore;
 
-import except.ExtenException;
+import model.dataStore.DSFactory;
+import model.except.ExtenException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import person.PList;
+import model.person.PList;
 
 
 public class DS_DBTest {

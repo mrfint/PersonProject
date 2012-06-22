@@ -9,9 +9,9 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-import dataStore.DSFactory;
+import model.dataStore.DSFactory;
 import java.awt.event.MouseListener;
-import model.PersonModel;
+import model.table.PersonModel;
 
 public class MainFrame extends JFrame{
     
@@ -81,10 +81,7 @@ public class MainFrame extends JFrame{
     }
 
     private void addContentPane(Container contentPane) {
-        
-        // Add Table
-        // jpFace = new JPanel();
-        
+           
         table = new JTable();
         table.setModel(tmodel);
         
@@ -104,8 +101,7 @@ public class MainFrame extends JFrame{
         
         // Add table and buttons
         contentPane.add(jpDnButtons, BorderLayout.SOUTH);
-        contentPane.add(new JScrollPane(table), BorderLayout.CENTER);
-        
+        contentPane.add(new JScrollPane(table), BorderLayout.CENTER);       
         
     }
     
@@ -131,7 +127,7 @@ public class MainFrame extends JFrame{
         //Process the results.
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             res = fc.getSelectedFile();
-            if(ask.equals("Save")) JOptionPane.showMessageDialog(this, "Data is saved");
+            if(ask.equals("Save")) JOptionPane.showMessageDialog(this, "Data saved");
         }
         
         return res;

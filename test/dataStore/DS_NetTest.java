@@ -1,6 +1,8 @@
 package dataStore;
 
-import except.ExtenException;
+import model.dataStore.DSFactory;
+import model.dataStore.ADS;
+import model.except.ExtenException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,7 +13,7 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import person.PList;
+import model.person.PList;
 
 
 @RunWith(value=Parameterized.class)
@@ -27,8 +29,8 @@ public class DS_NetTest {
     {
         Object[][] data = new Object[][] {
 //                        { PersonMain.initList0() }, 
-                        { PersonMain.initList1() },
-//                        { PersonMain.initListM() },
+//                        { PersonMain.initList1() },
+                        { PersonMain.initListM() },
        };
     return Arrays.asList(data);
     } 

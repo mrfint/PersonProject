@@ -14,9 +14,8 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import model.PersonModel;
+import model.table.PersonModel;
 import view.MainFrame;
-import view.PersonView;
 
 
 public class PersonController {
@@ -59,7 +58,9 @@ public class PersonController {
                                 (m_view.getTableSelectedCol() == m_model.PI_COL))
                         {
                             File filename = m_view.getFileWithAsk("Load");
-                            m_model.setValueImage(filename.toString(), m_view.getTableSelectedRow(), m_model.PI_COL);
+                            if(filename!=null){
+                                m_model.setValueImage(filename.toString(), m_view.getTableSelectedRow(), m_model.PI_COL);
+                            }
                         }
                     }
         });

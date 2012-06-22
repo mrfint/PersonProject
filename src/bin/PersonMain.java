@@ -1,12 +1,8 @@
 package bin;
 
 import controller.PersonController;
-import model.PersonModel;
+import model.table.PersonModel;
 import view.MainFrame;
-import view.PersonView;
-
-
-
 
 public class PersonMain {
 	
