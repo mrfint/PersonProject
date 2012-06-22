@@ -1,7 +1,6 @@
 
 package model.converter;
 
-import model.converter.util.FindField;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import model.person.Person;

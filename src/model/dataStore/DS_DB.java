@@ -13,7 +13,6 @@ public class DS_DB extends ADS{
     
     private ArrayList<Person> lst = null;
 
-    @Override
     public void save(List<Person> ls) throws IOException {
 
         Connection conn;
@@ -78,5 +77,20 @@ public class DS_DB extends ADS{
         }
         
         return lst;
+    }
+
+    @Override
+    public void create(Person p) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void update(List<Person> ls) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void delete(List<Person> ls) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -39,14 +39,7 @@ public class PersonModel extends AbstractTableModel
 	
 	public void save (String Fname)
 	{
-            try {
-                DSFactory.getInstance(Fname).save(plist);
-            } catch (IOException ex) {
-                Logger.getLogger(PersonModel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            catch (ExtenException ex) {
-                Logger.getLogger(PersonModel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
 	}
 	
 	

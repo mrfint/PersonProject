@@ -1,5 +1,5 @@
 
-package model.converter.util;
+package model.converter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

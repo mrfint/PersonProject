@@ -25,8 +25,7 @@ public class DS_Net_Client extends ADS{
     private PrintWriter out;
     private Person p;
 
-    @Override
-    public void save(List<Person> lst) throws IOException {
+    public DS_Net_Client() {
         
         try
         {
@@ -35,24 +34,11 @@ public class DS_Net_Client extends ADS{
             in = new Scanner(s.getInputStream());
             out = new PrintWriter(s.getOutputStream(), true );
 
-            out.println("save");           
-            for(int i=0; i<lst.size(); i++){
-                p = lst.get(i);
-                String type = p.getClass().getSimpleName();
-                out.println(FactoryConvertI.getInstance("json", type).toString(p));
-                
-                if(p.getIm()!=null && (!p.getIm().equals("")))
-                { 
-                    (new TransImage(p.getId(), p.getIm())).start();
-                }
-            }
-            System.out.println("Data is send");
-            s.close();
         }
         catch(IOException e){
             System.out.println("Connection don't esteblished");
         }
-
+        
     }
 
     @Override
@@ -60,28 +46,44 @@ public class DS_Net_Client extends ADS{
         
         List<Person> lst = new ArrayList<Person>();
 
-        try
-        {
-            s = new Socket("localhost", 8189);
 
-            Scanner in = new Scanner(s.getInputStream());
-            PrintWriter out = new PrintWriter(s.getOutputStream(), true );
+        out.println("load");
+        while (in.hasNextLine()) {
+            String s = in.nextLine();
+            String type = s.substring(2, s.indexOf(':')-1 );
+            lst.add(FactoryConvertI.getInstance("json", type).fromString(s));
+        } 
 
-            out.println("load");
-            while (in.hasNextLine()) {
-                String s = in.nextLine();
-                String type = s.substring(2, s.indexOf(':')-1 );
-                lst.add(FactoryConvertI.getInstance("json", type).fromString(s));
-            } 
+        s.close();
 
-            s.close();
-        }
-        catch(IOException e){
-            System.out.println("Connection don't esteblished");
-        }
-        
         return lst;
     }
+
+    @Override
+    public void create(Person p) throws IOException {
+        out.println("save");           
+        this.p = p;
+        String type = p.getClass().getSimpleName();
+        out.println(FactoryConvertI.getInstance("json", type).toString(p));
+
+        if(p.getIm()!=null && (!p.getIm().equals("")))
+        { 
+            (new TransImage(p.getId(), p.getIm())).start();
+        }
+            
+        System.out.println("Person is send");
+    }
+
+    @Override
+    public void update(List<Person> ls) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void delete(List<Person> ls) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     private class TransImage extends Thread{
         private final int pID;
         private final String pIM;
